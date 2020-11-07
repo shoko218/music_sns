@@ -1,0 +1,126 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+$main_c:linear-gradient(45deg,#6633ff,#cc00cc);
+$bgc:white;
+$footer_bgc:$bgc;
+
+$footer_h:5.6rem;
+
+// 共通
+
+html{
+    font-size: 62.5%;
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: white;
+}
+
+$h1_fz:2.6rem;
+$h2_fz:2.2rem;
+$h3_fz:2.0rem;
+$h4_fz:1.8rem;
+$h5_fz:1.6rem;
+$h6_fz:1.4rem;
+$normal_fz:1.4rem;
+$small_fz:1.2rem;
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+h1{
+    font-size:$h1_fz;
+}
+
+h2{
+    font-size:$h2_fz;
+}
+
+h3{
+    font-size:$h3_fz;
+}
+
+h4{
+    font-size:$h4_fz;
+}
+
+h5{
+    font-size:$h5_fz;
+}
+
+h6{
+    font-size:$h6_fz;
+}
+
+p,a{
+    font-size:$normal_fz;
+}
+
+#header{
+    background: $main_c;
+    display: flex;
+    justify-content: space-between;
+    height: 5.6rem;
+    padding: 0 2.4rem;
+    >*{
+        line-height: 5.6rem;
+    }
+    #logo{
+        font-size: 3rem;
+        color: white;
+    }
+}
+
+footer{
+    background: white;
+    text-align: center;
+    height: $footer_h;
+    line-height: $footer_h;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow:0 -0.2rem 0.4rem #eee;
+    ul{
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+    li{
+        &:hover{
+            background: $main_c;
+        }
+    }
+    a{
+        width: 25%;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    p{
+        font-size: 2.4rem;
+        background: $main_c;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255,255,255,0.0);
+        color: #cc00cc;
+        &:hover{
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: rgba(255,255,255,0.0);
+            color: #cc00cc;
+        }
+    }
+}
