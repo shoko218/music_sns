@@ -84,11 +84,12 @@ class RegisterController extends Controller
                 if (env('APP_ENV') === 'production') {
                     Storage::disk('s3')->put('/user_icons/'.$file_name.'.jpg',(string)$image->encode(),'public');
                 }else{
-                    $image->save('storage/user_icon/'.$file_name.'.jpg');
+                    $image->save('storage/user_icons/'.$file_name.'.jpg');
                 }
                 $user->update(['icon_path'=>$file_name.'.jpg']);
             }
         } catch (\Throwable $th) {
+            $user->delete();
             header('Location: /register');//考える
             exit();
         }

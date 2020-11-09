@@ -3,7 +3,6 @@
         <label for="icon">写真(jpeg,png形式、10MB以下)</label>
         <input id="image" type="file" name="icon" accept="image/jpeg, image/png" class="image" @change="onFileChange($event)">
         <p v-for="errMsg in errMsgs" :key="errMsg.id" class="form_alert">{{ errMsg }}</p>
-        <p>プレビュー</p>
         <div class="preview_user_icon" v-if="selectedImg!=null">
             <div class="user_icon">
                 <img :src="selectedImg" alt="プレビュー画像">

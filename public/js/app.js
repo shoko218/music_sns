@@ -1936,7 +1936,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     errMsgs: {
@@ -2003,46 +2002,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    oldMusicId: {
-      type: String
-    },
     musicId: {
-      type: String
+      type: Number
     }
   },
   data: function data() {
     return {
-      musicName: null,
+      dataMusicId: this.musicId,
+      title: null,
+      artist: null,
       word: null,
-      selectId: null,
-      musics: null
+      results: null,
+      artWorkUrl: null,
+      musicUrl: null,
+      itunesUrl: null,
+      doSearch: false,
+      audio: false,
+      btn_inner: '<i class="far fa-play-circle"></i>'
     };
   },
   mounted: function mounted() {
-    this.selectId = null;
-
-    if (this.oldMusicId != null) {
-      this.musicName = getMusic(oldMusicId);
-    } else if (this.musicId != null) {
-      this.musicName = getMusic(musicId);
+    if (this.dataMusicId != null) {
+      this.getMusic(this.dataMusicId);
+    }
+  },
+  watch: {
+    musicUrl: function musicUrl() {
+      if (this.musicUrl != null) {
+        this.audio = new Audio(this.musicUrl);
+      }
     }
   },
   methods: {
     searchMusic: function searchMusic(word) {
       var _this = this;
 
-      axios.get('http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=#{this.word}&media=music&entity=musicArtist&country=jp&lang=ja_jp&limit=10').then(function (res) {
-        _this.musics = res.data;
-      });
+      if (word != null) {
+        axios.get('/search_music?word=' + word).then(function (res) {
+          _this.results = res.data.results;
+        });
+      }
     },
     getMusic: function getMusic(id) {
       var _this2 = this;
 
-      axios.get('http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsLookup?' + id).then(function (res) {
-        _this2.musicName = res.data.trackName;
+      axios.get('/get_music?track_id=' + id).then(function (res) {
+        _this2.title = res.data.music_info.title;
+        _this2.artist = res.data.music_info.artist;
+        _this2.dataMusicId = res.data.music_info.track_id;
+        _this2.artworkUrl = res.data.music_info.artwork_url;
+        _this2.musicUrl = res.data.music_info.music_url;
+        _this2.itunesUrl = res.data.music_info.itunes_url;
       });
+    },
+    setMyMusic: function setMyMusic(track_id) {
+      var _this3 = this;
+
+      var post_data = {
+        'track_id': track_id
+      };
+      axios.post('/set_my_music', post_data).then(function (res) {
+        _this3.dataMusicId = res.data.track_id;
+
+        _this3.getMusic(_this3.dataMusicId);
+
+        _this3.word = null;
+        _this3.results = null;
+      });
+    },
+    playAudio: function playAudio() {
+      if (this.audio.paused) {
+        this.audio.play();
+        this.btn_inner = '<i class="far fa-pause-circle"></i>';
+      } else {
+        this.audio.pause();
+        this.btn_inner = '<i class="far fa-play-circle"></i>';
+      }
+    },
+    removeMyMusic: function removeMyMusic() {
+      axios.post('/remove_my_music');
+      this.dataMusicId = null;
+      this.title = null;
+      this.artist = null;
+      this.dataMusicId = null;
+      this.artworkUrl = null;
+      this.musicUrl = null;
+      this.itunesUrl = null;
+      this.audio = null;
     }
   }
 });
@@ -37668,8 +37737,6 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c("p", [_vm._v("プレビュー")]),
-      _vm._v(" "),
       _vm.selectedImg != null
         ? _c("div", { staticClass: "preview_user_icon" }, [
             _c("div", { staticClass: "user_icon" }, [
@@ -37731,108 +37798,158 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "input_parts" }, [
-    _c("label", { attrs: { for: "my_music_track_name" } }, [
-      _vm._v("イチオシ曲")
-    ]),
+  return _c("div", { attrs: { id: "my_music_parts" } }, [
+    _c("p", { staticClass: "my_music_label" }, [_vm._v("イチオシ曲")]),
     _vm._v(" "),
-    _c("input", {
-      attrs: {
-        id: "my_music_track_name",
-        type: "text",
-        readonly: "",
-        value: ""
-      }
-    }),
-    _vm._v(" "),
-    _vm.selectId != null
-      ? _c("input", {
-          attrs: {
-            id: "my_music_track_id",
-            type: "hidden",
-            name: "my_music_track_id",
-            hidden: ""
-          },
-          domProps: { value: _vm.oldMusicId }
-        })
-      : _vm.oldMusicId != null
-      ? _c("input", {
-          attrs: {
-            id: "my_music_track_id",
-            type: "hidden",
-            name: "my_music_track_id",
-            hidden: ""
-          },
-          domProps: { value: _vm.oldMusicId }
-        })
-      : _vm.musicId != null
-      ? _c("input", {
-          attrs: {
-            id: "my_music_track_id",
-            type: "hidden",
-            name: "my_music_track_id",
-            hidden: ""
-          },
-          domProps: { value: _vm.MusicId }
-        })
-      : _c("input", {
-          attrs: {
-            id: "my_music_track_id",
-            type: "hidden",
-            name: "my_music_track_id",
-            hidden: ""
-          }
-        }),
-    _vm._v(" "),
-    _c("p", [_vm._v("曲を探す")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.word,
-          expression: "word"
-        }
-      ],
-      attrs: { id: "search_word", type: "text" },
-      domProps: { value: _vm.word },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.word = $event.target.value
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.searchMusic(_vm.word)
-          }
-        }
-      },
-      [_vm._v("検索")]
-    ),
-    _vm._v(" "),
-    _vm.musics != null
-      ? _c(
-          "ul",
-          _vm._l(_vm.musics.results, function(r) {
-            return _c("li", { key: r.id }, [
-              _vm._v(_vm._s(r.artistName) + " - " + _vm._s(r.artistLinkUrl))
+    _vm.title != null && _vm.artist != null
+      ? _c("div", { staticClass: "my_music_box" }, [
+          _c(
+            "p",
+            {
+              staticClass: "play_btn",
+              domProps: { innerHTML: _vm._s(_vm.btn_inner) },
+              on: {
+                click: function($event) {
+                  return _vm.playAudio()
+                }
+              }
+            },
+            [_c("i", { staticClass: "far fa-play-circle" })]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "my_music_infos" }, [
+            _c("p", [
+              _c("img", {
+                staticClass: "my_music_artwork",
+                attrs: { src: _vm.artworkUrl, alt: "" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "my_music_text_infos" }, [
+              _c("p", { staticClass: "my_music_title" }, [
+                _vm._v(_vm._s(_vm.title))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "my_music_artist" }, [
+                _vm._v(_vm._s(_vm.artist))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "my_music_itunes_url" }, [
+                _c("a", { attrs: { href: _vm.itunesUrl } }, [
+                  _vm._v("iTunesでダウンロード")
+                ])
+              ])
             ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "my_music_remove_btn",
+              on: {
+                click: function($event) {
+                  return _vm.removeMyMusic()
+                }
+              }
+            },
+            [_c("p", [_vm._v("×")])]
+          )
+        ])
+      : _vm.dataMusicId != null
+      ? _c("p", [_vm._v("…")])
+      : _c("p", { staticClass: "my_music_not_set" }, [
+          _vm._v("まだ設定されていません。")
+        ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "my_music_search_parts" }, [
+      _c("div", { staticClass: "my_music_search_inputs" }, [
+        _c("p", [_vm._v("曲を探す")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "my_music_search_input_parts" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.word,
+                expression: "word"
+              }
+            ],
+            staticClass: "my_music_search_input",
+            attrs: { type: "text", placeholder: "曲名、アーティスト名で検索" },
+            domProps: { value: _vm.word },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.word = $event.target.value
+              }
+            }
           }),
-          0
-        )
-      : _vm._e()
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "search_input_btns",
+              on: {
+                click: function($event) {
+                  return _vm.searchMusic(_vm.word)
+                }
+              }
+            },
+            [_vm._m(0)]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.results != null && _vm.results[0]["trackId"] != -1
+        ? _c("div", [
+            _c("p", { staticClass: "result_label" }, [_vm._v("検索結果")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "result_lists" },
+              _vm._l(_vm.results, function(r) {
+                return _c(
+                  "li",
+                  {
+                    key: r.trackId,
+                    staticClass: "result_list",
+                    on: {
+                      click: function($event) {
+                        return _vm.setMyMusic(r.trackId)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "result_list_title" }, [
+                      _vm._v(_vm._s(r.title))
+                    ]),
+                    _c("br"),
+                    _c("span", { staticClass: "result_list_artist" }, [
+                      _vm._v(_vm._s(r.artist))
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        : _vm.results != null && _vm.results[0]["trackId"] == -1
+        ? _c("p", [_vm._v("見つかりませんでした。")])
+        : _vm._e()
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("i", { staticClass: "fas fa-search" })])
+  }
+]
 render._withStripped = true
 
 
@@ -50168,15 +50285,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/MusicSearchComponent.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MusicSearchComponent_vue_vue_type_template_id_30cc183b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MusicSearchComponent.vue?vue&type=template&id=30cc183b& */ "./resources/js/components/MusicSearchComponent.vue?vue&type=template&id=30cc183b&");
 /* harmony import */ var _MusicSearchComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MusicSearchComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/MusicSearchComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _MusicSearchComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _MusicSearchComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -50206,7 +50322,7 @@ component.options.__file = "resources/js/components/MusicSearchComponent.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/MusicSearchComponent.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

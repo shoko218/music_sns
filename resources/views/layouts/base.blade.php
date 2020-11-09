@@ -5,14 +5,14 @@
     </head>
     <body>
         <div id="wrapper">
-            @yield('header')
-            @include('components.msgs')
             <div id="app">
+                @yield('header')
+                @include('components.msgs')
                 <div @if(Auth::check()) class="contents" @endif>
                     @yield('content')
                 </div>
+                @yield('footer')
             </div>
-            @yield('footer')
         </div>
     </body>
 </html>

@@ -17,7 +17,7 @@ $header_h:5.6rem;
 $footer_h:5.6rem;
 
 $form_wsz:85%;
-$form_mxwsz:28rem;
+$form_mxwsz:36rem;
 
 $input_fz:1.6rem;
 $input_hsz:4rem;
@@ -381,6 +381,107 @@ label{
     }
 }
 
+.music_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    .music_infos{
+        display: flex;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        .music_artwork{
+            width: 10rem;
+            height: 10rem;
+        }
+        .music_text_infos{
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            .music_{
+                &title{
+                    font-size: 2rem;
+                }
+                &artist{
+                    font-size: 1.4rem;
+                }
+                &itunes_url>a{
+                    text-decoration: underline;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+
+.my_music_box{
+    display: flex;
+    height: 6rem;
+    .play_btn{
+        line-height: 6rem;
+        font-size: 4rem;
+        background: $main_c;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255,255,255,0.0);
+        color: #cc00cc;
+        margin-right: 2rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .my_music_infos{
+        display: flex;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        .my_music_artwork{
+            width: 6rem;
+            height: 6rem;
+            object-fit: cover;
+        }
+        .my_music_text_infos{
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            .my_music_{
+                &title{
+                    font-size: 1.4rem;
+                }
+                &artist{
+                    font-size: 1.1rem;
+                }
+                &itunes_url>a{
+                    font-size: 1rem;
+                    text-decoration: underline;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.result_label{
+    font-size: 1.8rem;
+}
+.result_list{
+    border-bottom: 1px solid $area_border_c;
+    padding: 0.6rem 1.2rem;
+    &:hover{
+        cursor: pointer;
+        opacity: $opacity;
+    }
+    &:first-child{
+        border-top: 1px solid $area_border_c;
+    }
+    .result_list_title{
+        font-size: 1.8rem;
+    }
+    .result_list_artist{
+        font-size: 1.2rem;
+    }
+}
+
 #login{
     .check{
         margin-bottom: 2rem;
@@ -400,9 +501,10 @@ label{
 
 //ユーザーページ
 .user_detail_icon{
-    width: 20rem;
-    height: 20rem;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
+    margin-bottom: 2rem;
 }
 
 #mypage{
@@ -412,12 +514,103 @@ label{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .my_music_box{
+        margin-bottom: 4rem;
+        padding-right: 6rem;
+    }
     .profile_infos{
         width: 80%;
         max-width: 64rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        h1{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h2{
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h3{
+            font-size: 1.2rem;
+        }
+        .profile_text_infos{
+            margin-bottom: 2rem;
+        }
+    }
+    .btns{
+        margin-bottom: 2rem;
+    }
+    .not_set_my_music_text{
+        text-align: center;
+        margin-bottom: 2rem;
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
+#edit{
+    .edit_profile_form_parts{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        max-width: $form_mxwsz;
+        width: $form_wsz;
+        text-align: left;
+        .my_music_label{
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    #my_music_parts{
+        margin-bottom: 2rem;
+    }
+
+    .my_music_box{
+        margin-bottom: 2rem;
+    }
+
+    .my_music_search_input_parts{
+        display: flex;
+        margin-bottom: 2rem;
+        .my_music_search_input{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            width: 80%;
+        }
+        .search_input_btns{
+            width: 20%;
+            height: $input_hsz;
+            background: $main_c;
+            color: white;
+            font-size: 3rem;
+            border-top-right-radius: $btn_rs;
+            border-bottom-right-radius: $btn_rs;
+            &:hover{
+                cursor: pointer;
+            }
+            >p{
+                text-align: center;
+                line-height: $input_hsz;
+            }
+        }
+    }
+    .my_music_not_set{
+        text-align: center;
+    }
+    .my_music_remove_btn{
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: auto;
+        font-size: 3rem;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 

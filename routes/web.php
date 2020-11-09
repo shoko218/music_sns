@@ -30,12 +30,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', 'Main\Mypage\TopController');
         Route::get('/edit', 'Main\Mypage\EditController');
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
-        Route::get('/select_music', 'Main\Mypage\SelectMusicController');
     });
 });
 
-Route::get('/search_music','Api\SearchMusicController');
 Route::get('/get_music','Api\GetMusicController');
+Route::get('/search_music','Api\SearchMusicController');
+Route::post('/set_my_music','Api\SetMyMusicController');
+Route::post('/remove_my_music','Api\RemoveMyMusicController');
 
 Route::get('/logout',function(){
     Auth::logout();
