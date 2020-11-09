@@ -1,4 +1,38 @@
-@extends('layouts.app')
+@extends('layouts.base')
+
+@section('pagename')
+    パスワードリセット
+@endsection
+
+@include('layouts.head')
+
+@include('layouts.header')
+
+@section('content')
+    <section id="pass_reset_mail" class="normal_section center_section">
+        @include('components.msgs')
+        <h1>パスワードリセットメールを送信する</h1>
+        <form method="POST" action="{{ route('password.email') }}" class="input_form">
+            @csrf
+            <div class="inputs">
+                <div class="input_parts">
+                    <label for="email">登録しているメールアドレス</label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="example@mail.com" required autocomplete="email" @if ($errors->has('email')) class="input_alert" @endif>
+                    @foreach ($errors->get('email') as $item)
+                        <p class="form_alert">{{ $item }}</p>
+                    @endforeach
+                </div>
+            </div>
+            <div class="btns">
+                <button type="submit" onClick="return confirm('パスワードをリセットするためのメールを送信します。\nよろしいですか？');">メールを送信する</button>
+            </div>
+        </form>
+    </section>
+@endsection
+
+@include('layouts.footer')
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -21,7 +55,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" >
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -44,4 +78,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

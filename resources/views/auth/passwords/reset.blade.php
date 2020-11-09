@@ -1,4 +1,46 @@
-@extends('layouts.app')
+@extends('layouts.base')
+
+@section('pagename')
+    パスワードをリセット
+@endsection
+
+@include('layouts.head')
+
+@include('layouts.header')
+
+@section('content')
+<section id="pass_reset" class="normal_section center_section">
+    <h1>パスワードをリセット</h1>
+    <form method="POST" action="{{ route('password.update') }}" class="input_form">
+        @csrf
+        <ul class="inputs">
+            <li class="input_parts">
+                <label for="email">メールアドレス</label>
+                <input id="email" type="email" name="email" value="{{ $email ?? old('email') }}" autocomplete="email" readonly required>
+            </li>
+            <li class="input_parts">
+                <label for="password">新しいパスワード(8文字以上の英数字、記号)</label>
+                <input id="password" type="password" name="password" required @if ($errors->has('password')) class="input_alert" @endif>
+                @foreach ($errors->get('password') as $item)
+                    <p class="form_alert">{{ $item }}</p>
+                @endforeach
+            </li>
+            <li class="input_parts">
+                <label for="password-confirm">新しいパスワード(確認用)</label>
+                <input id="password-confirm" type="password" name="password_confirmation" required @if ($errors->has('password_confirmation')) class="input_alert" @endif>
+            </li>
+        </ul>
+        <input type="hidden" name="token" value="{{ $token }}">
+        <div class="btns">
+            <button type="submit" onClick="return confirm('パスワードをリセットします。\nよろしいですか？');">リセット</button>
+        </div>
+    </form>
+</section>
+@endsection
+
+@include('layouts.footer')
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,10 +56,10 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right" readonly>{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email"  readonly>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -62,4 +104,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

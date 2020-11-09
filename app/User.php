@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'user_name','self_introduction','email', 'password','icon_path','my_music_track_id'
     ];
 
     /**
@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static $normal_change_rules=array(
+        'name' => ['required', 'string', 'max:40'],
+        'self_introduction' => ['nullable','string', 'max:200'],
+        'my_music_track_id' => ['nullable','string'],
+        'icon'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],
+    );
 }

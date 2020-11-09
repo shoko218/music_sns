@@ -6,7 +6,12 @@
     <body>
         <div id="wrapper">
             @yield('header')
-            @yield('content')
+            @include('components.msgs')
+            <div id="app">
+                <div @if(Auth::check()) class="contents" @endif>
+                    @yield('content')
+                </div>
+            </div>
             @yield('footer')
         </div>
     </body>

@@ -10,8 +10,37 @@
 $main_c:linear-gradient(45deg,#6633ff,#cc00cc);
 $bgc:white;
 $footer_bgc:$bgc;
+$font_c:#333333;
+$area_border_c:#cccccc;
 
+$header_h:5.6rem;
 $footer_h:5.6rem;
+
+$form_wsz:85%;
+$form_mxwsz:28rem;
+
+$input_fz:1.6rem;
+$input_hsz:4rem;
+$input_py:($input_hsz - $input_fz)/4;
+$input_px:$input_py*2;
+$input_rsz:0.6rem;
+
+$form_parts_my:2rem;
+
+$btn_fz:1.6rem;
+$btn_hsz:4rem;
+$btn_rs:1rem;
+$btn_py:0.6rem;
+$btn_px:2rem;
+$btn_my:2rem;
+$btn_wsz:24rem;
+
+$opacity:0.7;
+
+$std_my:3rem;
+$std_mx:2rem;
+$std_py:3rem;
+$std_px:1.6rem;
 
 // 共通
 
@@ -68,14 +97,45 @@ p,a{
     font-size:$normal_fz;
 }
 
+button,input,select,textarea,.button{
+    font-family:inherit;
+    font-size:100%;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    &>*{
+        list-style: none;
+    }
+}
+
+a{
+    color: $font_c;
+}
+
+a:hover{
+    color: $font_c;
+    text-decoration: none;
+    opacity:$opacity;
+}
+
+a:hover>*,button:hover,.button:hover{
+    opacity:$opacity;
+}
+
+a:visited{
+    color: $font_c;
+}
+
 #header{
     background: $main_c;
     display: flex;
     justify-content: space-between;
-    height: 5.6rem;
+    height: $header_h;
     padding: 0 2.4rem;
     >*{
-        line-height: 5.6rem;
+        line-height: $header_h;
     }
     #logo{
         font-size: 3rem;
@@ -87,8 +147,8 @@ footer{
     background: white;
     text-align: center;
     height: $footer_h;
-    line-height: $footer_h;
     position: fixed;
+    line-height: $footer_h;
     bottom: 0;
     width: 100%;
     box-shadow:0 -0.2rem 0.4rem #eee;
@@ -104,9 +164,6 @@ footer{
     }
     a{
         width: 25%;
-        &:hover{
-            text-decoration: none;
-        }
     }
     p{
         font-size: 2.4rem;
@@ -122,5 +179,257 @@ footer{
             -webkit-text-fill-color: rgba(255,255,255,0.0);
             color: #cc00cc;
         }
+    }
+    .selected_li{
+        background: $main_c;
+        p{
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: rgba(255,255,255,0.0);
+            color: #cc00cc;
+        }
+    }
+}
+
+.btns{
+    text-align : center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+button,.button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    font-size:$btn_fz;
+    background: $main_c;
+    color: #fff;
+    border-radius: $btn_rs;
+    padding:$btn_py $btn_px;
+    min-width: $btn_wsz;
+}
+
+button:hover,.button:hover{
+    opacity:$opacity;
+}
+
+.normal_section{
+    padding: $std_py $std_px;
+    min-width: 36rem;
+    h1{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+}
+
+.center_section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contents{
+    margin: 0 0 $footer_h;
+}
+
+.msg_box{
+    margin: $std_my $std_mx;
+    font-size: $normal_fz;
+    max-width: 76.8rem;
+    button{
+        height: 100%;
+        line-height: 100%;
+        font-size: $normal_fz;
+        min-width: 0;
+        background: none;
+    }
+}
+
+//form
+
+input,select,button,.button,*:focus,*:active,button:focus,.button:focus{
+    outline: 0;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    max-width: $form_mxwsz;
+    &>ul{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.input_form{
+    width: $form_wsz;
+}
+
+input,select{
+    height: $input_hsz;
+}
+
+input,select,textarea{
+    border:1px solid $area_border_c;
+    background:white;
+    width: 100%;
+    border-radius: $input_rsz;
+    padding: $input_py $input_px;
+    font-size: $input_fz;
+}
+
+.inputs{
+    margin-bottom: 1rem;
+}
+
+label{
+    color: $font_c;
+    font-size: $normal_fz;
+    margin: 0.5rem 0 0;
+}
+
+.input_parts{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    #image{
+        border:none;
+    }
+}
+
+.radio_parts,.input_parts{
+    margin-bottom: $form_parts_my;
+}
+
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & a{
+        text-decoration: underline;
+    }
+    margin-bottom: $std_my;
+}
+
+.checkbtn{
+    width: $normal_fz;
+    height:$normal_fz;
+    margin-right: 1rem;
+}
+
+.radiobtns_label{
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.radiobtns{
+    display: flex;
+    justify-content: space-between;
+}
+.radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & a{
+        text-decoration: underline;
+    }
+}
+
+.radiobtn{
+    width: $normal_fz;
+    height:$normal_fz;
+    margin-right: 1rem;
+}
+
+.form_requires{
+    color: red;
+}
+
+.preview_user_icon{
+    margin-top: 0.5rem;
+    .user_icon{
+        width: 24rem;
+        height: 24rem;
+        position: relative;
+        margin: 0 auto $std_my;
+        &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+        }
+        & img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            object-fit: cover;
+        }
+    }
+}
+
+#login{
+    .check{
+        margin-bottom: 2rem;
+    }
+    .btns{
+        margin-bottom: 2rem;
+    }
+    .login_nav{
+        text-decoration: underline;
+        font-size: $small_fz;
+        text-align: center;
+        &>li:nth-of-type(n+2){
+            margin-top: 0.6rem;
+        }
+    }
+}
+
+//ユーザーページ
+.user_detail_icon{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+}
+
+#mypage{
+    height: 100%;
+    min-height: calc(100vh - #{$header_h} - #{$footer_h});
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .profile_infos{
+        width: 80%;
+        max-width: 64rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width:480px) { //横画面
+}
+@media screen and (min-width:768px) and ( max-width:960px) {
+    .msg_box{
+        margin: $std_my auto;
+    }
+}
+@media screen and (min-width:960px) {
+    .msg_box{
+        margin: $std_my auto;
     }
 }
