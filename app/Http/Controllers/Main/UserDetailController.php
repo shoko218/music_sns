@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\Mypage;
+namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Library\BaseClass;
@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TopController extends Controller
+class UserDetailController extends Controller
 {
     public function __invoke(Request $request){
         $user=User::find(Auth::user()->id);
@@ -18,6 +18,6 @@ class TopController extends Controller
             $music_info=null;
         }
         $param=['user'=>$user,'music_info'=>$music_info];
-        return view('main.mypage.top',$param);
+        return view('main.user_detail',$param);
     }
 }

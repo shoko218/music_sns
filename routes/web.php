@@ -26,11 +26,14 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/playlist')->group(function () {
         Route::get('/', 'Main\Playlist\TopController');
     });
+    Route::prefix('/dm')->group(function () {
+        Route::get('/', 'Main\Playlist\TopController');
+    });
     Route::prefix('/mypage')->group(function () {
-        Route::get('/', 'Main\Mypage\TopController');
         Route::get('/edit', 'Main\Mypage\EditController');
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
     });
+    Route::get('/{}', 'Main\UserDetailController');
 });
 
 Route::get('/get_music','Api\GetMusicController');
