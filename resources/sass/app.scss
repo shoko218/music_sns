@@ -461,12 +461,123 @@ label{
     }
 }
 
+.search_music_box{
+    display: flex;
+    .play_btn{
+        line-height: 6rem;
+        font-size: 4rem;
+        background: $main_c;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255,255,255,0.0);
+        color: #cc00cc;
+        margin-right: 2rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .search_music_infos{
+        display: flex;
+        margin-right: auto;
+        .search_music_artwork{
+            width: 6rem;
+            height: 6rem;
+            object-fit: cover;
+        }
+        .search_music_text_infos{
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            .search_music_{
+                &title{
+                    font-size: 1.4rem;
+                }
+                &artist{
+                    font-size: 1.1rem;
+                }
+                &itunes_url>a{
+                    font-size: 1rem;
+                    text-decoration: underline;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    .page-item{
+        border: 0.1rem solid #cc00cc;
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+        position: relative;
+        background-color: white;
+        >.page-link{
+            background: $main_c;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: rgba(255,255,255,0.0);
+            color: #cc00cc;
+            line-height: 3rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .active{
+        background: $main_c;
+        >.page-link{
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+    }
+    .disabled{
+        background-color: #EEE;
+        border: 0.1rem solid #AAA;
+        >.page-link{
+            color: #888;
+        }
+    }
+    .page-arrow-item{
+        border-radius: 10%;
+        height: 3rem;
+        width: 4.8rem;
+        line-height: 3rem;
+        background: $main_c;
+        >.page-link{
+            color: white;
+        }
+        &:last-child.disabled,&:first-child.disabled{
+            background: none;
+            background-color: #EEE;
+            border: 0.1rem solid #AAA;
+            >.page-link{
+                color: #888;
+            }
+        }
+    }
+}
+
 .result_label{
     font-size: 1.8rem;
 }
+
+.result_lists{
+    margin-bottom: 2rem;
+}
+
 .result_list{
     border-bottom: 1px solid $area_border_c;
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 0;
     &:hover{
         cursor: pointer;
         opacity: $opacity;

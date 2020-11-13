@@ -11,7 +11,7 @@ class GetMusicController extends Controller
     public function __invoke(Request $request){
         $track_id=$request->input('track_id');
         $music_info=BaseClass::getMusic($track_id);
-        $param = ['music_info'=>$music_info];
+        $param = ['musicInfo'=>$music_info];
         return $param;
     }
 }

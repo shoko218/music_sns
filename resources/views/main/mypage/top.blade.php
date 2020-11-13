@@ -1,9 +1,5 @@
 @extends('layouts.base')
 
-@push('js')
-    <script src="{{ mix('js/player.js') }}" defer></script>
-@endpush
-
 @section('pagename')
 @endsection
 
