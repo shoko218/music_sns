@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
-    public function __invoke(){
+    public function __invoke(){//自分の登録情報を変更する
         $user=User::find(Auth::user()->id);
         $param=['user'=>$user];
         return view('main.mypage.edit',$param);

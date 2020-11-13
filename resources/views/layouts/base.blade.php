@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         @yield('head')
+        @stack('js')
     </head>
     <body>
         <div id="wrapper">

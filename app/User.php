@@ -38,9 +38,9 @@ class User extends Authenticatable
     ];
 
     public static $normal_change_rules=array(
-        'name' => ['required', 'string', 'max:40'],
-        'self_introduction' => ['nullable','string', 'max:200'],
-        'my_music_track_id' => ['nullable','string'],
-        'icon'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],
+        'name' => ['required', 'string', 'max:40'],//名前
+        'self_introduction' => ['nullable','string', 'max:200'],//自己紹介文(最大200字)
+        'my_music_track_id' => ['nullable','string'],//イチオシ音楽
+        'icon'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],//アイコン
     );
 }

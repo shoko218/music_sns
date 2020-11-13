@@ -33,13 +33,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit', 'Main\Mypage\EditController');
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
     });
-    Route::get('/{}', 'Main\UserDetailController');
+    Route::get('/{user_name}', 'Main\UserDetailController');
 });
 
-Route::get('/get_music','Api\GetMusicController');
-Route::get('/search_music','Api\SearchMusicController');
-Route::post('/set_my_music','Api\SetMyMusicController');
-Route::post('/remove_my_music','Api\RemoveMyMusicController');
+Route::prefix('/api')->group(function(){
+    Route::get('/get_music','Api\GetMusicController');
+    Route::get('/search_music','Api\SearchMusicController');
+    Route::post('/set_my_music','Api\SetMyMusicController');
+    Route::post('/remove_my_music','Api\RemoveMyMusicController');
+});
 
 Route::get('/logout',function(){
     Auth::logout();

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SetMyMusicController extends Controller
 {
-    public function __invoke(Request $request){
+    public function __invoke(Request $request){//自分のイチオシ音楽を設定する
         $user=User::find(Auth::user()->id);
         $user->update(['my_music_track_id'=>$request->track_id]);
         $param=['track_id'=>$request->track_id];

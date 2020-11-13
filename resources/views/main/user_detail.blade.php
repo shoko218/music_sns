@@ -3,6 +3,10 @@
 @section('pagename')
 @endsection
 
+@push('js')
+    <script src="{{ mix('js/player.js') }}" defer></script>
+@endpush
+
 @include('layouts.head')
 
 @include('layouts.header')
