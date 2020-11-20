@@ -11005,8 +11005,14 @@ button:hover,
   opacity: 0.7;
 }
 
+.reverse_btn {
+  background: white;
+  border: 0.1rem solid #971BE7;
+  color: #971BE7;
+}
+
 .normal_section {
-  padding: 3rem 1.6rem;
+  padding: 3rem 1.6rem 8.6rem;
   min-width: 36rem;
 }
 
@@ -11160,6 +11166,10 @@ label {
   color: red;
 }
 
+.file_input {
+  border: none;
+}
+
 .preview_user_icon {
   margin-top: 0.5rem;
 }
@@ -11189,143 +11199,102 @@ label {
 
 .music_box {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+}
+
+.music_box .play_btn {
+  line-height: 6rem;
+  font-size: 4rem;
+  background: linear-gradient(45deg, #6633ff, #cc00cc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  color: #cc00cc;
+  margin-right: 2rem;
+}
+
+.music_box .play_btn:hover {
+  cursor: pointer;
 }
 
 .music_box .music_infos {
   display: flex;
   margin-right: auto;
-  margin-bottom: 2rem;
 }
 
-.music_box .music_infos .music_artwork {
-  width: 10rem;
-  height: 10rem;
+.music_box .music_artwork {
+  width: 6rem;
+  height: 6rem;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.music_box .music_infos .music_text_infos {
+.music_box .music_text_infos {
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
 }
 
-.music_box .music_infos .music_text_infos .music_title {
-  font-size: 2rem;
-}
-
-.music_box .music_infos .music_text_infos .music_artist {
+.music_box .music_title {
   font-size: 1.4rem;
 }
 
-.music_box .music_infos .music_text_infos .music_itunes_url > a {
+.music_box .music_artist {
+  font-size: 1.1rem;
+}
+
+.music_box .music_itunes_url > a {
+  font-size: 1rem;
   text-decoration: underline;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+
+#my_music_parts {
+  margin-bottom: 2rem;
 }
 
 .my_music_box {
-  display: flex;
-  height: 6rem;
-}
-
-.my_music_box .play_btn {
-  line-height: 6rem;
-  font-size: 4rem;
-  background: linear-gradient(45deg, #6633ff, #cc00cc);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0);
-  color: #cc00cc;
-  margin-right: 2rem;
-}
-
-.my_music_box .play_btn:hover {
-  cursor: pointer;
-}
-
-.my_music_box .my_music_infos {
-  display: flex;
-  margin-right: auto;
   margin-bottom: 2rem;
 }
 
-.my_music_box .my_music_infos .my_music_artwork {
-  width: 6rem;
-  height: 6rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.my_music_box .my_music_infos .my_music_text_infos {
+.music_search_input_parts {
   display: flex;
-  flex-direction: column;
-  margin-left: 1rem;
+  margin-bottom: 2rem;
 }
 
-.my_music_box .my_music_infos .my_music_text_infos .my_music_title {
-  font-size: 1.4rem;
+.music_search_input_parts .music_search_input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 80%;
 }
 
-.my_music_box .my_music_infos .my_music_text_infos .my_music_artist {
-  font-size: 1.1rem;
-}
-
-.my_music_box .my_music_infos .my_music_text_infos .my_music_itunes_url > a {
-  font-size: 1rem;
-  text-decoration: underline;
-  font-size: 1rem;
-}
-
-.search_music_box {
-  display: flex;
-}
-
-.search_music_box .play_btn {
-  line-height: 6rem;
-  font-size: 4rem;
+.music_search_input_parts .music_search_input_btns {
+  width: 20%;
+  height: 4rem;
   background: linear-gradient(45deg, #6633ff, #cc00cc);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0);
-  color: #cc00cc;
-  margin-right: 2rem;
+  color: white;
+  font-size: 3rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
-.search_music_box .play_btn:hover {
+.music_search_input_parts .music_search_input_btns:hover {
   cursor: pointer;
 }
 
-.search_music_box .search_music_infos {
-  display: flex;
-  margin-right: auto;
+.music_search_input_parts .music_search_input_btns > p {
+  text-align: center;
+  line-height: 4rem;
 }
 
-.search_music_box .search_music_infos .search_music_artwork {
-  width: 6rem;
-  height: 6rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+.music_remove_btn {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: auto;
+  font-size: 3rem;
 }
 
-.search_music_box .search_music_infos .search_music_text_infos {
-  display: flex;
-  flex-direction: column;
-  margin-left: 1rem;
-}
-
-.search_music_box .search_music_infos .search_music_text_infos .search_music_title {
-  font-size: 1.4rem;
-}
-
-.search_music_box .search_music_infos .search_music_text_infos .search_music_artist {
-  font-size: 1.1rem;
-}
-
-.search_music_box .search_music_infos .search_music_text_infos .search_music_itunes_url > a {
-  font-size: 1rem;
-  text-decoration: underline;
-  font-size: 1rem;
+.music_remove_btn:hover {
+  cursor: pointer;
 }
 
 .pagination {
@@ -11512,7 +11481,7 @@ label {
   text-decoration: underline;
 }
 
-#edit .edit_profile_form_parts {
+#edit_mypage .edit_profile_form_parts {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -11522,61 +11491,92 @@ label {
   text-align: left;
 }
 
-#edit .edit_profile_form_parts .my_music_label {
+#edit_mypage .edit_profile_form_parts .my_music_label {
   margin-bottom: 0.4rem;
 }
 
-#edit #my_music_parts {
-  margin-bottom: 2rem;
+#create_post .btns {
+  padding-bottom: 3rem;
 }
 
-#edit .my_music_box {
-  margin-bottom: 2rem;
+#create_post_form {
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3rem 1.6rem 1.5rem;
+  text-align: left;
 }
 
-#edit .my_music_search_input_parts {
+#create_post_form #post_music_parts {
+  width: 100%;
+}
+
+#create_post_form #post_music_parts #music_search_parts {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+#home {
+  border-top: 1px solid #cccccc;
+  padding-bottom: 5.6rem;
+}
+
+#home .post {
+  border-bottom: 1px solid #cccccc;
   display: flex;
-  margin-bottom: 2rem;
+  padding: 1.6rem;
 }
 
-#edit .my_music_search_input_parts .my_music_search_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  width: 80%;
+#home .post_icon {
+  width: 5rem;
+  height: 5rem;
 }
 
-#edit .my_music_search_input_parts .search_input_btns {
-  width: 20%;
-  height: 4rem;
+#home .post_icon img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+#home .post_texts {
+  margin-left: 1rem;
+  width: 100%;
+}
+
+#create_post #post_media_btns {
+  display: flex;
+}
+
+#create_post #post_media_btns > * {
+  margin: 0;
+}
+
+#create_post #post_media_btns > *:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+#create_post #post_media_btns > * > p {
+  font-size: 2.4rem;
+  padding-right: 1.6rem;
+  display: inline-block;
+  background: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: gray;
+  color: gray;
+}
+
+#create_post #post_media_btns > * > .active_media {
   background: linear-gradient(45deg, #6633ff, #cc00cc);
-  color: white;
-  font-size: 3rem;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  color: #cc00cc;
 }
 
-#edit .my_music_search_input_parts .search_input_btns:hover {
-  cursor: pointer;
-}
-
-#edit .my_music_search_input_parts .search_input_btns > p {
-  text-align: center;
-  line-height: 4rem;
-}
-
-#edit .my_music_not_set {
-  text-align: center;
-}
-
-#edit .my_music_remove_btn {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: auto;
-  font-size: 3rem;
-}
-
-#edit .my_music_remove_btn:hover {
-  cursor: pointer;
+#create_post #post_file_input {
+  display: none;
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {

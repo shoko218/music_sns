@@ -14,6 +14,7 @@ $font_c:#333333;
 $area_border_c:#cccccc;
 $grad_center_c:#971BE7;
 
+
 $header_h:5.6rem;
 $footer_h:5.6rem;
 
@@ -221,13 +222,13 @@ button:hover,.button:hover{
 }
 
 .reverse_btn{
-    background-color: transparent;
+    background: white;
     border: 0.1rem solid $grad_center_c;
     color:$grad_center_c;
 }
 
 .normal_section{
-    padding: $std_py $std_px;
+    padding: $std_py $std_px $std_my+$footer_h;;
     min-width: 36rem;
     h1{
         text-align: center;
@@ -639,7 +640,6 @@ label{
 }
 
 #edit_mypage{
-    padding-bottom: $std_my+$footer_h;
     .edit_profile_form_parts{
         display: flex;
         justify-content: center;
@@ -666,9 +666,9 @@ label{
     margin: 0 auto;
     padding: $std_py $std_px $std_py/2;
     text-align: left;
-    #search_music_parts{
+    #post_music_parts{
         width: 100%;
-        .music_search_parts{
+        #music_search_parts{
             max-width: 40rem;
             margin: 0 auto;
         }
@@ -677,6 +677,7 @@ label{
 
 #home{
     border-top: 1px solid $area_border_c;
+    padding-bottom: $footer_h;
     .post{
         border-bottom: 1px solid $area_border_c;
         display: flex;
@@ -694,6 +695,39 @@ label{
             margin-left: 1rem;
             width: 100%;
         }
+    }
+}
+
+#create_post{
+    #post_media_btns{
+        display: flex;
+        >*{
+            margin: 0;
+            &:hover{
+                opacity:$opacity;
+                cursor: pointer;
+            }
+            >p{
+                font-size: 2.4rem;
+                padding-right: 1.6rem;
+                display: inline-block;
+                background: none;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color:gray;
+                color: gray;
+            }
+            >.active_media{
+                background: $main_c;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: rgba(255,255,255,0.0);
+                color: #cc00cc;
+            }
+        }
+    }
+    #post_file_input{
+        display: none;
     }
 }
 

@@ -18,7 +18,6 @@ Route::get('/', 'Main\IndexController');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/home')->group(function () {
         Route::get('/', 'Main\Home\TopController');
-        Route::get('/index', 'Main\Home\TopController');
     });
     Route::prefix('/notification')->group(function () {
         Route::get('/', 'Main\Notification\TopController');
@@ -34,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
     });
     Route::get('/{user_name}', 'Main\UserDetailController');
+    Route::post('/send_post_process', 'Main\SendPostProcessController');
 });
 
 Route::prefix('/api')->group(function(){

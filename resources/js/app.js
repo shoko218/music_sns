@@ -7,7 +7,8 @@
 require('./bootstrap');
 import Vue from 'vue'
 import IconComponent from './components/IconComponent'
-import MusicSearchComponent from './components/MusicSearchComponent'
+import SearchMyMusicComponent from './components/SearchMyMusicComponent'
+import AddMediaToPostComponent from './components/AddMediaToPostComponent'
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,6 +31,6 @@ import MusicSearchComponent from './components/MusicSearchComponent'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,MusicSearchComponent,
+        IconComponent,SearchMyMusicComponent,AddMediaToPostComponent
     },
 });

@@ -43,4 +43,8 @@ class User extends Authenticatable
         'my_music_track_id' => ['nullable','string'],//イチオシ音楽
         'icon'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],//アイコン
     );
+
+    public function posts(){
+        return $this->hasMany('App\Model\Post');
+    }
 }
