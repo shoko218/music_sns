@@ -25,14 +25,14 @@
             <h3>{{ $user->self_introduction }}</h3>
         </div>
         @if ($user->my_music_track_id)
-        <div class="my_music_box">
+        <div class="music_box my_music_box">
             <p class="play_btn"><i class="far fa-play-circle"></i></p>
-            <div class="my_music_infos">
-                <p><img src="{{ $music_info['artwork_url'] }}" alt="" class="my_music_artwork"></p>
-                <div class="my_music_text_infos">
-                    <p class="my_music_title">{{ $music_info['title'] }}</p>
-                    <p class="my_music_artist">{{ $music_info['artist'] }}</p>
-                    <p class="my_music_itunes_url"><a href="{{ $music_info['itunes_url'] }}">iTunesでダウンロード</a></p>
+            <div class="music_infos">
+                <p><img src="{{ $music_info['artwork_url'] }}" alt="" class="music_artwork"></p>
+                <div class="music_text_infos">
+                    <p class="music_title">{{ $music_info['title'] }}</p>
+                    <p class="music_artist">{{ $music_info['artist'] }}</p>
+                    <p class="music_itunes_url"><a href="{{ $music_info['itunes_url'] }}">iTunesでダウンロード</a></p>
                 </div>
             </div>
             <audio class="audio" src="{{ $music_info['music_url'] }}" preload="auto"></audio>

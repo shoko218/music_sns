@@ -13,7 +13,7 @@
 @include('layouts.header')
 
 @section('content')
-    <section id="edit" class="normal_section center_section">
+    <section id="edit_mypage" class="normal_section center_section">
         <h1>登録内容の変更</h1>
         <form id="edit_profile" method="POST" action="/mypage/edit_process" class="input_form" enctype='multipart/form-data'>
             @csrf
@@ -36,7 +36,7 @@
             </ul>
         </form>
         <div class="edit_profile_form_parts">
-            <music-search-component :music-id='@json($user->my_music_track_id)'></music-search-component>
+            <search-my-music-component :music-id='@json($user->my_music_track_id)'></search-my-music-component>
             <div class="btns">
                 <button type="submit" form="edit_profile">登録</button>
             </div>
