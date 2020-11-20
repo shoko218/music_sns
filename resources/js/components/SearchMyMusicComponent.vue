@@ -17,7 +17,10 @@
         </div>
         <p v-else-if="dataMusicId!=null">…</p><!--イチオシ曲を登録しているが、曲情報を読み込めていない場合-->
         <p class="my_music_not_set" v-else>まだ設定されていません。</p><!--イチオシ曲を登録していない場合-->
-        <div class="my_music_search_parts">
+        <div class="btns" v-if="!showed">
+            <div class="button reverse_btn" @click="showSearchBar()">＋曲を探す</div>
+        </div>
+        <div class="my_music_search_parts" v-if="showed">
             <div class="music_search_inputs">
                 <p>曲を探す</p>
                 <div class="music_search_input_parts">
@@ -76,6 +79,7 @@
         data(){
             return {
                 dataMusicId:this.musicId,
+                showed:false,
                 myMusic:null,
                 myAudio:null,
                 word:"",
@@ -180,6 +184,11 @@
                         this.btnInners.splice(i, 1, playBtn);
                         this.audios[i].pause();
                     }
+                }
+            },
+            showSearchBar(){
+                if(!this.showed){
+                    this.showed=true;
                 }
             }
         }
