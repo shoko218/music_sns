@@ -19,14 +19,15 @@ class SendPostProcessController extends Controller
                 $file_name = uniqid(rand());
                 $path=$request->image->path();
                 $image=\Image::make($path);
-                $image->resize(600,null,function($constraint){//リサイズ
+                $image->resize(600,null,function($constraint){//横幅最大600px、縦横比はそのままでリサイズ
+                    $constraint->aspectRatio();
                     $constraint->upsize();
                 });
                 $post->img_path=$file_name.'.jpg';
                 $post->save();
-                if (env('APP_ENV') === 'production') {
+                if (env('APP_ENV') === 'production') {//本番環境
                     // Storage::disk('s3')->put('/lover_imgs/'.$file_name.'.jpg',(string)$image->encode(),'public');///未定
-                }else{
+                }else{//開発環境
                     $image->save('storage/post_imgs/'.$file_name.'.jpg');
                 }
             }

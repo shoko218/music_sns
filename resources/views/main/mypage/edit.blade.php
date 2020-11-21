@@ -36,7 +36,7 @@
             </ul>
         </form>
         <div class="edit_profile_form_parts">
-            <search-my-music-component :music-id='@json($user->my_music_track_id)'></search-my-music-component>
+            <select-my-music-component :music-id='@json($user->my_music_track_id)'></select-my-music-component>
             <div class="btns">
                 <button type="submit" form="edit_profile">登録</button>
             </div>

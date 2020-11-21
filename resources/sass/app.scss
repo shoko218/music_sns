@@ -135,7 +135,12 @@ a:visited{
     display: flex;
     justify-content: space-between;
     height: $header_h;
+    width: 100%;
     padding: 0 2.4rem;
+    position: fixed;
+    top:0px;
+    left: 0px;
+    z-index: 999;
     >*{
         line-height: $header_h;
     }
@@ -243,7 +248,7 @@ button:hover,.button:hover{
 }
 
 .contents{
-    margin: 0 0 $footer_h;
+    margin: $header_h 0 $footer_h;
 }
 
 .msg_box{
@@ -658,11 +663,24 @@ label{
     .btns{
         padding-bottom: $std_py;
     }
+    #post_img_preview{
+        width: 100%;
+        padding-top: 75%;
+        position: relative;
+        >img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            border-radius:2%;
+        }
+    }
 }
 
 #create_post_form{
     width: 100%;
-    max-width: 60rem;
+    max-width: 46rem;
     margin: 0 auto;
     padding: $std_py $std_px $std_py/2;
     text-align: left;
@@ -678,6 +696,10 @@ label{
 #home{
     border-top: 1px solid $area_border_c;
     padding-bottom: $footer_h;
+    #posts{
+        width: 100%;
+        max-width: 56rem;
+    }
     .post{
         border-bottom: 1px solid $area_border_c;
         display: flex;
@@ -694,6 +716,36 @@ label{
         &_texts{
             margin-left: 1rem;
             width: 100%;
+        }
+        &_contents{
+            margin-bottom: 1rem;
+        }
+        &_img_box{
+            width: 100%;
+            padding-top: 75%;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        &_img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            border-radius:2%;
+        }
+        .music_box{
+            margin-bottom: 1rem;
+        }
+        .post_action_btns{
+            display: flex;
+            justify-content: space-between;
+            >p{
+                color: gray;
+                >a{
+                    font-size: 2rem;
+                }
+            }
         }
     }
 }

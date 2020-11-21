@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('/{user_name}', 'Main\UserDetailController');
     Route::post('/send_post_process', 'Main\SendPostProcessController');
+    Route::post('/delete_post_process', 'Main\DeletePostProcessController');
 });
 
 Route::prefix('/api')->group(function(){
