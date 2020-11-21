@@ -11311,6 +11311,10 @@ label {
   margin-bottom: 2rem;
 }
 
+.pagination .page-link {
+  display: block;
+}
+
 .pagination .page-item {
   border: 0.1rem solid #cc00cc;
   border-radius: 50%;

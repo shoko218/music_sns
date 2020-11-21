@@ -492,6 +492,9 @@ label{
     text-align: center;
     font-size: 1.4rem;
     margin-bottom: 2rem;
+    .page-link{
+        display: block;
+    }
     .page-item{
         border: 0.1rem solid #cc00cc;
         border-radius: 50%;
