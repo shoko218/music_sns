@@ -11500,6 +11500,12 @@ label {
   margin-bottom: 0.4rem;
 }
 
+#create_post {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
 #create_post .btns {
   padding-bottom: 3rem;
 }
@@ -11508,6 +11514,7 @@ label {
   width: 100%;
   padding-top: 75%;
   position: relative;
+  margin-bottom: 2rem;
 }
 
 #create_post #post_img_preview > img {
@@ -11518,23 +11525,6 @@ label {
   position: absolute;
   top: 0;
   border-radius: 2%;
-}
-
-#create_post_form {
-  width: 100%;
-  max-width: 46rem;
-  margin: 0 auto;
-  padding: 3rem 1.6rem 1.5rem;
-  text-align: left;
-}
-
-#create_post_form #post_music_parts {
-  width: 100%;
-}
-
-#create_post_form #post_music_parts #music_search_parts {
-  max-width: 40rem;
-  margin: 0 auto;
 }
 
 #home {
@@ -11597,6 +11587,7 @@ label {
 #home .post .post_action_btns {
   display: flex;
   justify-content: space-between;
+  margin-top: 1.6rem;
 }
 
 #home .post .post_action_btns > p {
@@ -11609,6 +11600,7 @@ label {
 
 #create_post #post_media_btns {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 #create_post #post_media_btns > * {
@@ -11641,6 +11633,27 @@ label {
 
 #create_post #post_file_input {
   display: none;
+}
+
+#create_post #post_medias {
+  margin-bottom: 1rem;
+}
+
+#create_post #music_search_parts {
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+}
+
+#create_post #post_music_preview_parts {
+  margin-bottom: 2rem;
+}
+
+#create_post_form {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding-top: 3rem;
+  text-align: left;
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {

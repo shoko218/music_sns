@@ -24,9 +24,9 @@
                         <img class="post_img" :src="'/storage/post_imgs/'+post['img_path']" alt="" v-if="post['img_path']!=null" >
                     </div>
                     <div class="post_action_btns">
-                        <p><a><i class="fas fa-reply"></i></a></p><!--リプライ-->(☆未実装)
-                        <p><a><i class="fas fa-retweet"></i></a></p><!--リツイート-->(☆未実装)
-                        <p><a><i class="fas fa-star"></i></a></p><!--お気に入り-->(☆未実装)
+                        <p><a><i class="fas fa-reply"></i></a></p><!--リプライ(☆未実装)-->
+                        <p><a><i class="fas fa-retweet"></i></a></p><!--リツイート(☆未実装)-->
+                        <p><a><i class="fas fa-star"></i></a></p><!--お気に入り(☆未実装)-->
                         <p><a @click="deletePost(post['post_id'],i)"><i class="fas fa-trash-alt"></i></a></p><!--投稿削除-->
                     </div>
                 </div>

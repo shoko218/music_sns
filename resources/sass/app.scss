@@ -660,6 +660,9 @@ label{
 }
 
 #create_post{
+    width: 100%;
+    max-width: 46rem;
+    margin: 0 auto;
     .btns{
         padding-bottom: $std_py;
     }
@@ -667,6 +670,7 @@ label{
         width: 100%;
         padding-top: 75%;
         position: relative;
+        margin-bottom: 2rem;
         >img{
             width: 100%;
             height: 100%;
@@ -674,21 +678,6 @@ label{
             position: absolute;
             top: 0;
             border-radius:2%;
-        }
-    }
-}
-
-#create_post_form{
-    width: 100%;
-    max-width: 46rem;
-    margin: 0 auto;
-    padding: $std_py $std_px $std_py/2;
-    text-align: left;
-    #post_music_parts{
-        width: 100%;
-        #music_search_parts{
-            max-width: 40rem;
-            margin: 0 auto;
         }
     }
 }
@@ -740,6 +729,7 @@ label{
         .post_action_btns{
             display: flex;
             justify-content: space-between;
+            margin-top: 1.6rem;
             >p{
                 color: gray;
                 >a{
@@ -753,6 +743,7 @@ label{
 #create_post{
     #post_media_btns{
         display: flex;
+        margin-bottom: 1rem;
         >*{
             margin: 0;
             &:hover{
@@ -781,6 +772,24 @@ label{
     #post_file_input{
         display: none;
     }
+    #post_medias{
+        margin-bottom: 1rem;
+    }
+    #music_search_parts{
+        max-width: 40rem;
+        margin: 0 auto 3rem;
+    }
+    #post_music_preview_parts{
+        margin-bottom: 2rem;
+    }
+}
+
+#create_post_form{
+    width: 100%;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding-top: $std_py;
+    text-align: left;
 }
 
 @media screen and (min-width:480px) { //横画面

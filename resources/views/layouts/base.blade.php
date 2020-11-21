@@ -8,8 +8,8 @@
         <div id="wrapper">
             <div id="app">
                 @yield('header')
-                @include('components.msgs')
                 <div @if(Auth::check()) class="contents" @endif>
+                    @include('components.msgs')
                     @yield('content')
                 </div>
                 @yield('footer')
