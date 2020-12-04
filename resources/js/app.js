@@ -37,3 +37,18 @@ const app = new Vue({
         IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent
     },
 });
+
+// window.onload = function onload(){
+//     var $imgElements = document.getElementsByClassName( "post_img_box" );
+//     var $html = $('html');
+//     $html.removeClass('scroll-prevent');
+//     for( var $i = 0; $i < $imgElements.length; $i++ ) {
+//         $imgElements[$i].onclick = function () {
+//             if ($html.classList.contains("scroll-prevent")){
+//                 $html.removeClass('scroll-prevent');
+//             } else {
+//                 $html.addClass('scroll-prevent');
+//             }
+//         }
+//     }
+// }

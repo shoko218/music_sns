@@ -19,8 +19,8 @@
                             </div>
                         </div>
                     </div>
-                    <p v-else-if="post['track_id']!=null"><i class="fas fa-spinner"></i></p><!--音楽がついているが読み込み中ならこれを表示-->
-                    <div v-if="post['img_path']!=null" class="post_img_box" ><!--画像がついていれば画像を表示-->
+                    <p v-else-if="post['track_id']!=null" class="post_music_spinner"><i class="fas fa-spinner faa-spin animated"></i></p><!--音楽がついているが読み込み中ならこれを表示-->
+                    <div v-if="post['img_path']!=null" class="post_img_box" @click="showImg(post['img_path'])"><!--画像がついていれば画像を表示-->
                         <img class="post_img" :src="'/storage/post_imgs/'+post['img_path']" alt="" v-if="post['img_path']!=null" >
                     </div>
                     <div class="post_action_btns">
@@ -102,6 +102,9 @@
                     }
                 });
             },
+            showImg(imgPath){
+                this.$emit('show-img',imgPath);
+            }
         }
     }
 </script>

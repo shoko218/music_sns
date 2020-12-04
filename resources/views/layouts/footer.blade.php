@@ -13,6 +13,11 @@
                             <p><i class="fas fa-list-ol"></i></p>
                         </li>
                     </a>
+                    <a href="/search">
+                        <li @if (Request::is('search')||Request::is('search/*')) class="selected_li" @endif><!--通知のページ内ならば選択デザインに切り替え-->
+                            <p><i class="fas fa-search"></i></p>
+                        </li>
+                    </a>
                     <a href="/notification">
                         <li @if (Request::is('notification')||Request::is('notification/*')) class="selected_li" @endif><!--通知のページ内ならば選択デザインに切り替え-->
                             <p><i class="fas fa-bell"></i></p>
