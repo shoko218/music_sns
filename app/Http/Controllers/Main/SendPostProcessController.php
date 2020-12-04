@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Library\BaseClass;
 use App\Model\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,16 @@ class SendPostProcessController extends Controller
             $post=new Post;
             $post->user_id=Auth::user()->id;
             $post->fill($request->except('image'))->save();
+            if($post->music_track_id!=null){
+                $music_info=BaseClass::getMusic($post->music_track_id);
+                $post->update([
+                    'music_title'=>$music_info['title'],
+                    'music_artist'=>$music_info['artist'],
+                    'music_artwork'=>$music_info['artwork_url'],
+                    'music_url'=>$music_info['music_url'],
+                    'music_itunes_url'=>$music_info['itunes_url'],
+                ]);
+            }
             if($request->file('image')!=null){
                 $file_name = uniqid(rand());
                 $path=$request->image->path();
