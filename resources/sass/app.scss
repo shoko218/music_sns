@@ -261,7 +261,7 @@ button:hover,.button:hover{
 }
 
 .msg_box{
-    margin: $std_my $std_mx;
+    margin: $std_my+$header_h $std_mx $std_my;
     font-size: $normal_fz;
     max-width: 76.8rem;
     button{
@@ -831,11 +831,11 @@ label{
 }
 @media screen and (min-width:768px) and ( max-width:960px) {
     .msg_box{
-        margin: $std_my auto;
+        margin: $std_my+$header_h auto $std_my;
     }
 }
 @media screen and (min-width:960px) {
     .msg_box{
-        margin: $std_my auto;
+        margin: $std_my+$header_h auto $std_my;
     }
 }

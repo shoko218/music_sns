@@ -8,7 +8,16 @@ class Post extends Model
 {
 
     protected $fillable = [
-        'contents','image','track_id','repost_id','reply_post_id',
+        'contents',
+        'image',
+        'music_track_id',
+        'music_title',
+        'music_artist',
+        'music_artwork',
+        'music_url',
+        'music_itunes_url',
+        'repost_id',
+        'reply_post_id',
     ];
 
     public static $post_rules=array(
