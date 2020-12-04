@@ -39,6 +39,6 @@ class EditProcessController extends Controller
             $param=['user'=>$user];
             return redirect('/mypage/edit')->with('err_msg','エラーが発生しました。');
         }
-        return redirect('/'.$user->user_name.'')->with('suc_msg','変更しました。');
+        return redirect('/user/'.$user->user_name.'')->with('suc_msg','変更しました。');
     }
 }

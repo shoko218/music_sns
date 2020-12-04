@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit', 'Main\Mypage\EditController');
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
     });
-    Route::get('/{user_name}', 'Main\UserDetailController');
+    Route::get('/user/{user_name}', 'Main\UserDetailController');
     Route::post('/send_post_process', 'Main\SendPostProcessController');
     Route::post('/delete_post_process', 'Main\DeletePostProcessController');
 });
