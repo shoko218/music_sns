@@ -28,14 +28,14 @@
         <div class="music_box my_music_box">
             <p class="play_btn"><i class="far fa-play-circle"></i></p>
             <div class="music_infos">
-                <p><img src="{{ $user->my_music_artwork }}" alt="" class="music_artwork"></p>
+                <p><img src="{{ $music_info['artwork_url'] }}" alt="" class="music_artwork"></p>
                 <div class="music_text_infos">
-                    <p class="music_title">{{ $user->my_music_title }}</p>
-                    <p class="music_artist">{{ $user->my_music_artist }}</p>
-                    <p class="music_itunes_url"><a href="{{ $user->my_music_itunes_url }}">iTunesでダウンロード</a></p>
+                    <p class="music_title">{{ $music_info['title'] }}</p>
+                    <p class="music_artist">{{ $music_info['artist'] }}</p>
+                    <p class="music_itunes_url"><a href="{{ $music_info['itunes_url'] }}">iTunesでダウンロード</a></p>
                 </div>
             </div>
-            <audio class="audio" src="{{ $user->my_music_url }}" preload="auto"></audio>
+            <audio class="audio" src="{{ $music_info['music_url'] }}" preload="auto"></audio>
         </div>
         @else
             <p class="not_set_my_music_text">まだイチオシ曲が設定されていません。<br><a href="http://music_sns.com/mypage/edit#my_music_parts">イチオシ曲を設定する</a></p>
