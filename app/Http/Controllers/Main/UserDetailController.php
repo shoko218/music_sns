@@ -17,12 +17,7 @@ class UserDetailController extends Controller
         if($user==null){//該当するユーザーが存在しなければ
             return redirect('/home');
         }
-        if($user->my_music_track_id!=null){//該当するユーザーがイチオシ音楽を登録していなければ
-            $music_info=BaseClass::getMusic($user->my_music_track_id);
-        }else{//該当ユーザーがイチオシ音楽を登録していれば
-            $music_info=null;
-        }
-        $param=['user'=>$user,'music_info'=>$music_info];
+        $param=['user'=>$user];
         return view('main.user_detail',$param);
     }
 }
