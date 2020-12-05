@@ -16,7 +16,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user_name','self_introduction','email', 'password','icon_path','my_music_track_id'
+        'name',
+        'user_name',
+        'self_introduction',
+        'email',
+        'password',
+        'icon_path',
+        'my_music_track_id',
+        'my_music_title',
+        'my_music_artist',
+        'my_music_artwork',
+        'my_music_url',
+        'my_music_itunes_url',
     ];
 
     /**

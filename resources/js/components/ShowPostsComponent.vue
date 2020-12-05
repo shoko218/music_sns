@@ -8,18 +8,18 @@
                 <div class="post_texts"><!--投稿データ-->
                     <p class="post_user_name"><b>{{ post['name'] }}</b>{{ " "+"@"+post['user_name'] }}</p><!--ユーザー名-->
                     <p class="post_contents">{{ post['contents'] }}</p><!--投稿内容-->
-                    <div class="music_box" v-if="postMusics[post['post_id']]!=null"><!--音楽がついていれば音楽-->
+                    <div class="music_box" v-if="audios[post['post_id']]!=null"><!--音楽がついていれば音楽-->
                         <p class="play_btn" @click="audioBtn(post['post_id'])" v-html="btnInners[post['post_id']]"></p>
                         <div class="music_infos">
-                            <p><img :src="postMusics[post['post_id']]['artwork_url']" alt="" class="music_artwork"></p>
+                            <p><img :src="post['music_artwork']" alt="" class="music_artwork"></p>
                             <div class="music_text_infos">
-                                <p class="music_title">{{ postMusics[post['post_id']]['title'] }}</p>
-                                <p class="music_artist">{{ postMusics[post['post_id']]['artist'] }}</p>
-                                <p class="music_itunes_url"><a :href="postMusics[post['post_id']]['itunes_url']">iTunesでダウンロード</a></p>
+                                <p class="music_title">{{ post['music_title'] }}</p>
+                                <p class="music_artist">{{ post['music_artist'] }}</p>
+                                <p class="music_itunes_url"><a :href="post['music_itunes_url']">iTunesでダウンロード</a></p>
                             </div>
                         </div>
                     </div>
-                    <p v-else-if="post['track_id']!=null" class="post_music_spinner"><i class="fas fa-spinner faa-spin animated"></i></p><!--音楽がついているが読み込み中ならこれを表示-->
+                    <p v-else-if="post['music_track_id']!=null" class="post_music_spinner"><i class="fas fa-spinner faa-spin animated"></i></p><!--音楽がついているが読み込み中ならこれを表示-->
                     <div v-if="post['img_path']!=null" class="post_img_box" @click="showImg(post['img_path'])"><!--画像がついていれば画像を表示-->
                         <img class="post_img" :src="'/storage/post_imgs/'+post['img_path']" alt="" v-if="post['img_path']!=null" >
                     </div>
@@ -93,12 +93,9 @@
             },
             getPostMusics(){
                 this.dataPosts.forEach(p => {
-                    if(p['track_id']!=null){
-                        axios.get('/api/get_music?track_id='+p['track_id']).then(res => {
-                            this.$set(this.postMusics,p['post_id'],res.data.musicInfo);
-                            this.$set(this.btnInners,p['post_id'],playBtn);
-                            this.$set(this.audios,p['post_id'],new Audio(res.data.musicInfo.music_url));
-                        });
+                    if(p['music_track_id']!=null){
+                        this.$set(this.btnInners,p['post_id'],playBtn);
+                        this.$set(this.audios,p['post_id'],new Audio(p['music_url']));
                     }
                 });
             },

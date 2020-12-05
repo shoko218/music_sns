@@ -4,7 +4,7 @@
             <p>投稿する</p>
             <input type="hidden" name="_token" :value="csrf"><!--csrfトークン-->
             <textarea name="contents" id="" cols="30" rows="6" placeholder=""></textarea>
-            <input id="track_id" type="hidden" name="track_id" :value="selectedMusicId">
+            <input id="music_track_id" type="hidden" name="music_track_id" :value="selectedMusicId">
             <div id="post_media_btns">
                 <div @click="showSearchBar()"><!--音楽追加ボタン-->
                     <p v-bind:class="{ 'active_media' : selectedMusicId!=null }"><i class="fas fa-music"></i></p>

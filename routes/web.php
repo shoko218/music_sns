@@ -22,11 +22,14 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/notification')->group(function () {
         Route::get('/', 'Main\Notification\TopController');
     });
+    Route::prefix('/search')->group(function () {
+        Route::get('/', 'Main\Search\TopController');
+    });
     Route::prefix('/playlist')->group(function () {
         Route::get('/', 'Main\Playlist\TopController');
     });
     Route::prefix('/dm')->group(function () {
-        Route::get('/', 'Main\Playlist\TopController');
+        Route::get('/', 'Main\DM\TopController');
     });
     Route::prefix('/mypage')->group(function () {
         Route::get('/edit', 'Main\Mypage\EditController');
