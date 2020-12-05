@@ -610,10 +610,11 @@ label{
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-#mypage{
+#user_detail{
     height: 100%;
     min-height: calc(100vh - #{$header_h} - #{$footer_h});
     display: flex;
@@ -645,6 +646,9 @@ label{
         }
         .profile_text_infos{
             margin-bottom: 2rem;
+        }
+        .btns{
+            margin-bottom: 4rem;
         }
     }
     .btns{

@@ -76,6 +76,7 @@
             },
             stopAllAudios(){//全ての音楽を止める
                 this.$emit('stop-create-post-music');
+                this.$emit('stop-my-music');
                 if(this.audios.length!=0){
                     this.btnInner=playBtn;
                     Object.keys(this.audios).forEach(key => {
