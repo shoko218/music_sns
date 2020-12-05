@@ -12,7 +12,8 @@ class IndexController extends Controller
         if(Auth::check()){
             return redirect('/home');
         }else{
-            return view('main.index');
+            return redirect('/login');
+            // return view('main.index');
         }
     }
 }

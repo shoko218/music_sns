@@ -720,11 +720,11 @@ label{
     object-fit: cover;
 }
 
-#posts{
+.posts{
         border-top: 1px solid $area_border_c;
         padding-bottom: $footer_h;
         width: 100%;
-        max-width: 56rem;
+        // max-width: 56rem;//仮
 }
 .post{
         border-bottom: 1px solid $area_border_c;
@@ -747,8 +747,10 @@ label{
             margin-bottom: 1rem;
     }
     &_img_box{
-            width: 100%;
-            padding-top: 75%;
+            // width: 100%;
+            // padding-top: 75%;
+            width: 40rem;
+            height: 30rem;
             position: relative;
             margin-bottom: 1rem;
     }
@@ -769,7 +771,8 @@ label{
     }
     .post_action_btns{
             display: flex;
-            justify-content: space-between;
+            flex-direction: row-reverse;//仮
+            // justify-content: space-between;
             margin-top: 1.6rem;
             >p{
                 color: gray;
@@ -830,10 +833,6 @@ label{
     margin: 0 auto;
     padding-top: $std_py;
     text-align: left;
-}
-
-#search{
-    // .
 }
 
 @media screen and (min-width:480px) { //横画面
