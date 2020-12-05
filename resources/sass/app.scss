@@ -459,15 +459,18 @@ label{
     margin-bottom: 2rem;
 }
 
-.music_search_input_parts{
+.search_inputs{
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+}
+.search_input_parts{
     display: flex;
-    margin-bottom: 2rem;
-    .music_search_input{
+    .search_input{
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         width: 80%;
     }
-    .music_search_input_btns{
+    .search_input_btns{
         width: 20%;
         height: $input_hsz;
         background: $main_c;
@@ -713,14 +716,13 @@ label{
     object-fit: cover;
 }
 
-#home{
-    border-top: 1px solid $area_border_c;
-    padding-bottom: $footer_h;
-    #posts{
+#posts{
+        border-top: 1px solid $area_border_c;
+        padding-bottom: $footer_h;
         width: 100%;
         max-width: 56rem;
-    }
-    .post{
+}
+.post{
         border-bottom: 1px solid $area_border_c;
         display: flex;
         padding: $std_px;
@@ -731,37 +733,37 @@ label{
                 width: 5rem;
                 height: 5rem;
                 border-radius: 50%;
-            }
         }
-        &_texts{
+    }
+    &_texts{
             margin-left: 1rem;
             width: 100%;
-        }
-        &_contents{
+    }
+    &_contents{
             margin-bottom: 1rem;
-        }
-        &_img_box{
+    }
+    &_img_box{
             width: 100%;
             padding-top: 75%;
             position: relative;
             margin-bottom: 1rem;
-        }
-        &_img{
+    }
+    &_img{
             width: 100%;
             height: 100%;
             object-fit: cover;
             position: absolute;
             top: 0;
             border-radius:2%;
-        }
-        .music_box{
+    }
+    .music_box{
             margin-bottom: 1rem;
-        }
-        &_music_spinner{
+    }
+    &_music_spinner{
             font-size: 4rem;
             line-height: 6rem;
-        }
-        .post_action_btns{
+    }
+    .post_action_btns{
             display: flex;
             justify-content: space-between;
             margin-top: 1.6rem;
@@ -769,7 +771,6 @@ label{
                 color: gray;
                 >a{
                     font-size: 2rem;
-                }
             }
         }
     }
@@ -825,6 +826,10 @@ label{
     margin: 0 auto;
     padding-top: $std_py;
     text-align: left;
+}
+
+#search{
+    // .
 }
 
 @media screen and (min-width:480px) { //横画面

@@ -9,7 +9,7 @@
 @include('layouts.header')
 
 @section('content')
-
+    <search-component></search-component>
 @endsection
 
 @include('layouts.footer')

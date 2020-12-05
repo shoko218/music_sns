@@ -11,6 +11,7 @@ import SelectMyMusicComponent from './components/SelectMyMusicComponent'
 import CreatePostComponent from './components/CreatePostComponent'
 import ShowPostsComponent from './components/ShowPostsComponent'
 import HomeTopComponent from './components/HomeTopComponent'
+import SearchComponent from './components/SearchComponent'
 
 
 /**
@@ -34,7 +35,7 @@ import HomeTopComponent from './components/HomeTopComponent'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent
+        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent
     },
 });
 

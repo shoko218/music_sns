@@ -20,12 +20,12 @@
         <div class="btns" v-if="!showed">
             <div class="button reverse_btn" @click="showSearchBar()">＋曲を探す</div>
         </div>
-        <div class="my_music_search_parts" v-if="showed">
-            <div class="music_search_inputs">
+        <div class="search_parts" v-if="showed">
+            <div class="search_inputs">
                 <p>曲を探す</p>
-                <div class="music_search_input_parts">
-                    <input class="music_search_input" type="text" v-model="word" placeholder="曲名、アーティスト名で検索">
-                    <div class="music_search_input_btns" v-on:click="searchMusic(word)"><p><i class="fas fa-search"></i></p></div>
+                <div class="search_input_parts">
+                    <input class="search_input" type="text" v-model="word" placeholder="曲名、アーティスト名で検索">
+                    <div class="search_input_btns" v-on:click="searchMusic(word)"><p><i class="fas fa-search"></i></p></div>
                 </div>
             </div>
             <div v-if="result.length!=0&&result[0]['track_id']!=-1"><!--検索結果が1つ以上ある場合-->

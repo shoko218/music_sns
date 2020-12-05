@@ -45,6 +45,7 @@ Route::prefix('/api')->group(function(){
     Route::get('/search_music','Api\SearchMusicController');
     Route::post('/set_my_music','Api\SetMyMusicController');
     Route::post('/remove_my_music','Api\RemoveMyMusicController');
+    Route::post('/search_data','Api\SearchDataController');
 });
 
 Route::get('/logout',function(){

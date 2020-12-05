@@ -11270,18 +11270,22 @@ label {
   margin-bottom: 2rem;
 }
 
-.music_search_input_parts {
-  display: flex;
-  margin-bottom: 2rem;
+.search_inputs {
+  max-width: 36rem;
+  margin: 0 auto 2rem;
 }
 
-.music_search_input_parts .music_search_input {
+.search_input_parts {
+  display: flex;
+}
+
+.search_input_parts .search_input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   width: 80%;
 }
 
-.music_search_input_parts .music_search_input_btns {
+.search_input_parts .search_input_btns {
   width: 20%;
   height: 4rem;
   background: linear-gradient(45deg, #6633ff, #cc00cc);
@@ -11291,11 +11295,11 @@ label {
   border-bottom-right-radius: 1rem;
 }
 
-.music_search_input_parts .music_search_input_btns:hover {
+.search_input_parts .search_input_btns:hover {
   cursor: pointer;
 }
 
-.music_search_input_parts .music_search_input_btns > p {
+.search_input_parts .search_input_btns > p {
   text-align: center;
   line-height: 4rem;
 }
@@ -11561,50 +11565,47 @@ label {
      object-fit: cover;
 }
 
-#home {
+#posts {
   border-top: 1px solid #cccccc;
   padding-bottom: 5.6rem;
-}
-
-#home #posts {
   width: 100%;
   max-width: 56rem;
 }
 
-#home .post {
+.post {
   border-bottom: 1px solid #cccccc;
   display: flex;
   padding: 1.6rem;
 }
 
-#home .post_icon {
+.post_icon {
   width: 5rem;
   height: 5rem;
 }
 
-#home .post_icon img {
+.post_icon img {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
 }
 
-#home .post_texts {
+.post_texts {
   margin-left: 1rem;
   width: 100%;
 }
 
-#home .post_contents {
+.post_contents {
   margin-bottom: 1rem;
 }
 
-#home .post_img_box {
+.post_img_box {
   width: 100%;
   padding-top: 75%;
   position: relative;
   margin-bottom: 1rem;
 }
 
-#home .post_img {
+.post_img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -11614,26 +11615,26 @@ label {
   border-radius: 2%;
 }
 
-#home .post .music_box {
+.post .music_box {
   margin-bottom: 1rem;
 }
 
-#home .post_music_spinner {
+.post_music_spinner {
   font-size: 4rem;
   line-height: 6rem;
 }
 
-#home .post .post_action_btns {
+.post .post_action_btns {
   display: flex;
   justify-content: space-between;
   margin-top: 1.6rem;
 }
 
-#home .post .post_action_btns > p {
+.post .post_action_btns > p {
   color: gray;
 }
 
-#home .post .post_action_btns > p > a {
+.post .post_action_btns > p > a {
   font-size: 2rem;
 }
 

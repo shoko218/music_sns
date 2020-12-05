@@ -32,12 +32,12 @@
             </div>
             <p v-else-if="selectedMusicId!=null">…</p><!--添付する曲を登録しているが、曲情報を読み込めていない場合-->
             <div id="post_search_music_parts">
-                <div id="music_search_parts" v-if="showed">
-                    <div class="music_search_inputs">
+                <div class="search_parts" v-if="showed">
+                    <div class="search_inputs">
                         <label for="post_music_search_input">曲を探す</label>
-                        <div class="music_search_input_parts">
-                            <input class="music_search_input" type="text" v-model="word" id="post_music_search_input" placeholder="曲名、アーティスト名で検索">
-                            <div class="music_search_input_btns" v-on:click="searchMusic(word)"><p><i class="fas fa-search"></i></p></div>
+                        <div class="search_input_parts">
+                            <input class="search_input" type="text" v-model="word" id="post_music_search_input" placeholder="曲名、アーティスト名で検索">
+                            <div class="search_input_btns" v-on:click="searchMusic(word)"><p><i class="fas fa-search"></i></p></div>
                         </div>
                     </div>
                     <div v-if="result.length!=0&&result[0]['track_id']!=-1"><!--検索結果が1つ以上ある場合検索結果を表示-->
