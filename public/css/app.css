@@ -11271,6 +11271,7 @@ label {
 }
 
 .search_inputs {
+  width: 100%;
   max-width: 36rem;
   margin: 0 auto 2rem;
 }
@@ -11522,6 +11523,12 @@ label {
   margin-bottom: 0.4rem;
 }
 
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #create_post {
   width: 100%;
   max-width: 46rem;
@@ -11699,6 +11706,12 @@ label {
   margin: 0 auto;
   padding-top: 3rem;
   text-align: left;
+}
+
+#search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {

@@ -1,5 +1,5 @@
 <template><!--投稿+ホーム画面-->
-    <div>
+    <div id="home">
         <div id='showed_img_bg' @click="disappearedImg()" v-if="showedImgPath!=null">
             <img :src="'/storage/post_imgs/'+showedImgPath" alt="" id="showed_img">
         </div>

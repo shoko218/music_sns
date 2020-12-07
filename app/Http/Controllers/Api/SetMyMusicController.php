@@ -18,7 +18,7 @@ class SetMyMusicController extends Controller
             'my_music_title'=>$new_music_info['title'],
             'my_music_artist'=>$new_music_info['artist'],
             'my_music_artwork'=>$new_music_info['artwork_url'],
-            'my_music_url'=>$new_music_info,
+            'my_music_url'=>$new_music_info['music_url'],
             'my_music_itunes_url'=>$new_music_info['itunes_url'],
         ]);
         $param=['track_id'=>$request->track_id];
