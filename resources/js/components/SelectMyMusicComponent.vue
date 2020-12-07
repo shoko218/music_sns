@@ -102,9 +102,6 @@
             myMusic: function(){//イチオシ音楽が新しく定義された際にAudioオブジェクトを作る
                 if(this.myMusic!=null&&this.myMusic.music_url!=null){
                     this.myAudio = new Audio(this.myMusic.music_url);
-                    this.myAudio.addEventListener('ended',function(){
-                        this.btnInner=playBtn;
-                    }.bind(this));
                 }
             },
         },
@@ -145,6 +142,9 @@
                         this.stopAllAudios();
                         this.audios[id].play();
                         this.btnInners.splice(id, 1, stopBtn)
+                        this.audios[id].addEventListener('ended',function(){
+                            this.btnInners.splice(id, 1, playBtn)
+                        }.bind(this));
                     }else{//再生中の場合
                         this.audios[id].pause();
                         this.btnInners.splice(id, 1, playBtn)
@@ -154,6 +154,9 @@
                         this.stopAllAudios();
                         this.myAudio.play();
                         this.btnInner=stopBtn;
+                        this.myAudio.addEventListener('ended',function(){
+                            this.btnInner=playBtn;
+                        }.bind(this));
                     }else{//再生中の場合
                         this.myAudio.pause();
                         this.btnInner=playBtn;

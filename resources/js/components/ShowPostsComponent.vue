@@ -68,6 +68,9 @@
                         this.stopAllAudios();
                         this.audios[id].play();
                         this.$set(this.btnInners,id,stopBtn);
+                        this.audios[id].addEventListener('ended',function(){
+                            this.$set(this.btnInners,id,playBtn);
+                        }.bind(this));
                     }else{//再生中の場合
                         this.audios[id].pause();
                         this.$set(this.btnInners,id,playBtn);

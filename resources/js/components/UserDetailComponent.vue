@@ -72,6 +72,9 @@
                     this.$refs.show_posts.stopAllAudios();
                     this.myMusic.play();
                     this.btnInner=stopBtn;
+                    this.myMusic.addEventListener('ended',function(){
+                        this.btnInner=playBtn;
+                    }.bind(this));
                 }else{//再生中の場合
                     this.stopMyMusic();
                 }

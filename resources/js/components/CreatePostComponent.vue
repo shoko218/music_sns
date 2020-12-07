@@ -118,12 +118,9 @@
             }
         },
         watch:{
-            selectedMusic: function(){//イチオシ音楽が新しく定義された際にAudioオブジェクトを作る
+            selectedMusic: function(){//投稿する音楽が新しく定義された際にAudioオブジェクトを作る
                 if(this.selectedMusic!=null&&this.selectedMusic.music_url!=null){
                     this.selectedAudio = new Audio(this.selectedMusic.music_url);
-                    this.selectedAudio.addEventListener('ended',function(){
-                        this.btnInner=playBtn;
-                    }.bind(this));
                 }
             },
         },
@@ -161,6 +158,9 @@
                         this.stopAllAudios();
                         this.audios[id].play();
                         this.btnInners.splice(id, 1, stopBtn)
+                        this.audios[id].addEventListener('ended',function(){
+                            this.btnInners.splice(id, 1, playBtn)
+                        }.bind(this));
                     }else{//再生中の場合
                         this.audios[id].pause();
                         this.btnInners.splice(id, 1, playBtn)
@@ -171,6 +171,9 @@
                         this.stopAllAudios();
                         this.selectedAudio.play();
                         this.btnInner=stopBtn;
+                        this.selectedAudio.addEventListener('ended',function(){
+                            this.btnInner=playBtn;
+                        }.bind(this));
                     }else{//再生中の場合
                         this.selectedAudio.pause();
                         this.btnInner=playBtn;
