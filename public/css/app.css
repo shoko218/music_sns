@@ -11570,10 +11570,11 @@ label {
      object-fit: cover;
 }
 
-.posts {
+#posts {
   border-top: 1px solid #cccccc;
   padding-bottom: 5.6rem;
   width: 100%;
+  max-width: 56rem;
 }
 
 .post {
@@ -11603,8 +11604,8 @@ label {
 }
 
 .post_img_box {
-  width: 40rem;
-  height: 30rem;
+  width: 100%;
+  padding-top: 75%;
   position: relative;
   margin-bottom: 1rem;
 }
@@ -11630,7 +11631,7 @@ label {
 
 .post .post_action_btns {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   margin-top: 1.6rem;
 }
 
