@@ -36,13 +36,17 @@ class BaseClass{//共用関数クラス
         $arr = json_decode($json,true);
         if($arr['results']!=null){
             foreach ($arr['results'] as $index => $result) {
-                $results[$index]=array(
-                    'title'=>$result['trackName'],//タイトル
-                    'artist'=>$result['artistName'],//アーティスト名
-                    'artwork_url'=>$result['artworkUrl100'],//CDジャケットの画像
-                    'music_url'=>$result['previewUrl'],//試聴音源のURL
-                    'track_id'=>$result['trackId']//楽曲id
-                );
+                if(array_key_exists('trackName',$result)&&array_key_exists('artistName',$result)&&array_key_exists('artworkUrl100',$result)&&array_key_exists('previewUrl',$result)&&array_key_exists('trackId',$result)){
+                    $results[$index]=array(
+                        'title'=>$result['trackName'],//タイトル
+                        'artist'=>$result['artistName'],//アーティスト名
+                        'artwork_url'=>$result['artworkUrl100'],//CDジャケットの画像
+                        'music_url'=>$result['previewUrl'],//試聴音源のURL
+                        'track_id'=>$result['trackId']//楽曲id
+                    );
+                }else{
+                    $results[$index]=array();
+                }
             }
         }else{
             $results[0]=array('trackId'=>-1);

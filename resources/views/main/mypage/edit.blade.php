@@ -13,7 +13,7 @@
 @include('layouts.header')
 
 @section('content')
-    <section id="edit_mypage" class="normal_section center_section">
+    <div id="edit_mypage" class="normal_section center_section">
         <h1>登録内容の変更</h1>
         <form id="edit_profile" method="POST" action="/mypage/edit_process" class="input_form" enctype='multipart/form-data'>
             @csrf
@@ -35,12 +35,12 @@
                 <icon-component :err-msgs='@json($errors->get('image'))' @if($user->icon_path!=null) img-path={{ $user->icon_path }} @endif @if(env('APP_ENV') == 'production' && $user->icon_path!=null) s3-url={{ Storage::disk('s3')->url('user_icons/'.$user->icon_path)}}@endif></icon-component>
             </ul>
         </form>
-        <div class="edit_profile_form_parts">
+        <section class="edit_profile_form_parts">
             <select-my-music-component :music-id='@json($user->my_music_track_id)'></select-my-music-component>
-            <div class="btns">
-                <button type="submit" form="edit_profile">登録</button>
-            </div>
+        </section>
+        <div class="btns">
+            <button type="submit" form="edit_profile">登録</button>
         </div>
-    </section>
+    </div>
 @endsection
 @include('layouts.footer')

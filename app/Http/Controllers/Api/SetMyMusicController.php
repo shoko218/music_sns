@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Library\BaseClass;
 use Illuminate\Http\Request;
-use App\User;
+use App\Model\User;
 use Illuminate\Support\Facades\Auth;
 
 class SetMyMusicController extends Controller

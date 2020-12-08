@@ -35,7 +35,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit', 'Main\Mypage\EditController');
         Route::post('/edit_process', 'Main\Mypage\EditProcessController');
     });
-    Route::get('/user/{user_name}', 'Main\UserDetailController');
+    Route::prefix('/user')->group(function () {
+        Route::get('/{user_name}', 'Main\UserDetailController');
+        Route::get('/{user_name}/follow', 'Main\ShowFollowController');
+        Route::get('/{user_name}/follower', 'Main\ShowFollowerController');
+    });
     Route::post('/send_post_process', 'Main\SendPostProcessController');
     Route::post('/delete_post_process', 'Main\DeletePostProcessController');
 });
@@ -46,6 +50,8 @@ Route::prefix('/api')->group(function(){
     Route::post('/set_my_music','Api\SetMyMusicController');
     Route::post('/remove_my_music','Api\RemoveMyMusicController');
     Route::post('/search_data','Api\SearchDataController');
+    Route::post('/change_follow','Api\ChangeFollowController');
+    Route::post('/get_follow_relations','Api\GetFollowRelationsController');
 });
 
 Route::get('/logout',function(){

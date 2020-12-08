@@ -1,15 +1,16 @@
 <template>
-    <section id="user_detail">
+    <div id="user_detail">
         <div id='showed_img_bg' @click="disappearedImg()" v-if="showedImgPath!=null">
             <img :src="'/storage/post_imgs/'+showedImgPath" alt="" id="showed_img">
         </div>
-        <div class="profile_infos">
+        <section class="profile_infos">
             <p v-if="user.icon_path!=null"><img :src="'/storage/user_icons/'+user.icon_path" class="user_detail_icon"></p>
             <p v-else><img src="/image/somethings/noimage_user.jpg" class="user_detail_icon"></p>
             <div class="profile_text_infos">
                 <h1>{{ user.name }}</h1>
                 <h2>@{{ user.user_name }}</h2>
-                <h3>{{ user.self_introduction }}</h3>
+                <p>{{ user.self_introduction }}</p>
+                <p><a :href="'/user/'+user.user_name+'/follow'"><b>{{followNum}}</b>フォロー</a>　<a :href="'/user/'+user.user_name+'/follower'"><b>{{followerNum}}</b>フォロワー</a></p>
             </div>
             <div class="music_box my_music_box" v-if="user.my_music_track_id!=null">
                 <p class="play_btn" @click="audioBtn()" v-html="btnInner"></p>
@@ -22,13 +23,15 @@
                     </div>
                 </div>
             </div>
-            <p class="not_set_my_music_text" v-else>まだイチオシ曲が設定されていません。<br><a href="http://music_sns.com/mypage/edit#my_music_parts">イチオシ曲を設定する</a></p>
+            <p class="not_set_my_music_text" v-else-if="myId==user['id']">まだイチオシ曲が設定されていません。<br><a href="http://music_sns.com/mypage/edit#my_music_parts">イチオシ曲を設定する</a></p>
             <div class="btns">
-                <button class="reverse_btn" onclick="location.href='/mypage/edit'">プロフィールを編集する</button>
+                <button class="reverse_btn" onclick="location.href='/mypage/edit'" v-if="myId==user['id']">プロフィールを編集する</button>
+                <button @click="followBtn()" v-else-if="dataIsFollow">フォロー中</button>
+                <button class="reverse_btn" @click="followBtn()" v-else>フォローする</button>
             </div>
-        </div>
-        <show-posts-component :posts="posts" ref="show_posts" @stop-my-music="stopMyMusic" v-if="posts!=null"></show-posts-component>
-    </section>
+        </section>
+        <show-posts-component :posts="posts" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="posts!=null"></show-posts-component>
+    </div>
 </template>
 
 <script>
@@ -46,6 +49,12 @@
             },
             posts:{
                 type:Array,
+            },
+            isFollow:{
+                type:Boolean,
+            },
+            myId:{
+                type:Number,
             }
         },
         data(){
@@ -53,9 +62,13 @@
                 showedImgPath:null,
                 myMusic:null,
                 btnInner:playBtn,
+                dataIsFollow:this.isFollow,
+                followNum:null,
+                followerNum:null,
             }
         },
         mounted(){
+            this.getFollowRelation()
             if(this.user.my_music_track_id!=null){
                 this.myMusic=new Audio(this.user.my_music_url);
             }
@@ -80,10 +93,29 @@
                 }
             },
             stopMyMusic(){
-                this.myMusic.pause();
-                this.btnInner=playBtn;
-            }
+                if(this.myMusic!=null){
+                    this.myMusic.pause();
+                    this.btnInner=playBtn;
+                }
+            },
+            getFollowRelation(){
+                var post_data = {
+                    'user_id': this.user['id'],
+                };
+                axios.post('/api/get_follow_relations',post_data).then(res=>{
+                    this.followNum=res.data.follow_num;
+                    this.followerNum=res.data.follower_num;
+                });
+            },
+            followBtn(){
+                var post_data = {
+                    'to_user_id': this.user['id'],
+                };
+                axios.post('/api/change_follow',post_data).then(res=>{
+                    this.dataIsFollow=res.data.is_follow;
+                    this.getFollowRelation()
+                });
+            },
         }
     }
 </script>
-

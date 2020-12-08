@@ -1,5 +1,5 @@
 <template>
-    <div id="create_post">
+    <section id="create_post">
         <form id="create_post_form" action="/send_post_process" method="post" enctype='multipart/form-data'><!--投稿フォーム-->
             <p>投稿する</p>
             <input type="hidden" name="_token" :value="csrf"><!--csrfトークン-->
@@ -82,7 +82,7 @@
         <div class="btns">
             <button form="create_post_form">送信</button>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

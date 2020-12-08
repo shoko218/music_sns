@@ -30,6 +30,6 @@ class Post extends Model
         'repost_id'=>['required','integer']
     );
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Model\User');
     }
 }

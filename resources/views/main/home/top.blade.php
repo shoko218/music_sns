@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('pagename')
+    ホーム
 @endsection
 
 @include('layouts.head')

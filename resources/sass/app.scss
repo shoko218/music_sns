@@ -153,8 +153,10 @@ a:visited{
         line-height: $header_h;
     }
     #logo{
-        font-size: 3rem;
-        color: white;
+        >a{
+            font-size: 3rem;
+            color: white;
+        }
     }
 }
 
@@ -229,6 +231,7 @@ button,.button{
     border-radius: $btn_rs;
     padding:$btn_py $btn_px;
     min-width: $btn_wsz;
+    height: 4rem;
 }
 
 button:hover,.button:hover{
@@ -257,7 +260,7 @@ button:hover,.button:hover{
 }
 
 .contents{
-    margin: $header_h 0 $footer_h;
+    padding: $header_h 0 $footer_h;
 }
 
 .msg_box{
@@ -632,21 +635,21 @@ label{
         display: flex;
         flex-direction: column;
         align-items: center;
-        h1{
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        h2{
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        h3{
-            font-size: 1.2rem;
-        }
         .profile_text_infos{
             margin-bottom: 2rem;
+            >*{
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            h1{
+                font-size: 2rem;
+            }
+            h2{
+                font-size: 1.6rem;
+            }
+            p{
+                font-size: 1.4rem;
+            }
         }
         .btns{
             margin-bottom: 4rem;
@@ -727,23 +730,25 @@ label{
     object-fit: cover;
 }
 
-#posts{
-        border-top: 1px solid $area_border_c;
-        padding-bottom: $footer_h;
-        width: 100%;
-        max-width: 56rem;
+.posts{
+    border-top: 1px solid $area_border_c;
+    border-bottom: 1px solid $area_border_c;
+    width: 100%;
+    max-width: 56rem;
 }
 .post{
+    display: flex;
+    padding: $std_px;
+    &:not(:last-child){
         border-bottom: 1px solid $area_border_c;
-        display: flex;
-        padding: $std_px;
-        &_icon{
+    }
+    &_icon{
+        width: 5rem;
+        height: 5rem;
+        img{
             width: 5rem;
             height: 5rem;
-            img{
-                width: 5rem;
-                height: 5rem;
-                border-radius: 50%;
+            border-radius: 50%;
         }
     }
     &_texts{
@@ -843,6 +848,53 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#follow_list,#follower_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    h1{
+        margin: 2rem 0;
+    }
+    >p{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.users{
+    border-top: 1px solid $area_border_c;
+    border-bottom: 1px solid $area_border_c;
+    width: 100%;
+    max-width: 56rem;
+    .user{
+        padding: $std_px;
+        >a{
+            display: flex;
+        }
+        &:not(:last-child){
+            border-bottom: 1px solid $area_border_c;
+        }
+        &_icon{
+            width: 5rem;
+            height: 5rem;
+            img{
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+            }
+        }
+        &_infos{
+                margin-left: 1rem;
+                width: 100%;
+        }
+        &_description{
+            margin-bottom: 1rem;
+        }
+    }
 }
 
 @media screen and (min-width:480px) { //横画面

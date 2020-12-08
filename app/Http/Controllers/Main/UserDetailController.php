@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Library\BaseClass;
 use App\Model\Post;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Model\Fflog;
 
 class UserDetailController extends Controller
 {
@@ -23,7 +24,13 @@ class UserDetailController extends Controller
         ->where('user_id','=',$user->id)
         ->orderby('posts.id','desc')
         ->get();
-        $param=['user'=>$user,'posts'=>$posts];
-        return view('main.user_detail',$param);
+        $follow_log=Fflog::select('*')->where('to_user_id','=',$user->id)->where('from_user_id','=',Auth::user()->id)->first();
+        if($follow_log!=null){
+            $is_follow=true;
+        }else{
+            $is_follow=false;
+        }
+        $param=['user'=>$user,'posts'=>$posts,'is_follow'=>$is_follow];
+        return view('main.user.user_detail',$param);
     }
 }

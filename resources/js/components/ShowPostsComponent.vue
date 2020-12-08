@@ -1,8 +1,10 @@
 <template><!--投稿を表示-->
-    <div id="posts">
+    <section class="posts">
         <div class="post" v-for="(post,i) in dataPosts" :key="post['post_id']">
             <div class="post_icon"><!--アイコン--->
-                <img :src="'/storage/user_icons/'+post['icon_path']" alt="">
+                <a :href="'/user/'+post['user_name']">
+                    <img :src="'/storage/user_icons/'+post['icon_path']" alt="">
+                </a>
             </div>
             <div class="post_texts"><!--投稿データ-->
                 <p class="post_user_name"><b>{{ post['name'] }}</b>{{ " "+"@"+post['user_name'] }}</p><!--ユーザー名-->
@@ -30,7 +32,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -109,7 +111,7 @@
             },
             showImg(imgPath){
                 this.$emit('show-img',imgPath);
-            }
+            },
         }
     }
 </script>

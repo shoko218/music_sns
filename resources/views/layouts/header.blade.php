@@ -1,6 +1,6 @@
 @section('header')
     <div id="header">
-        <p id="logo">logo</p>
+        <p id="logo"><a href="/home">MusicS</a></p>
         @if (Auth::check())
         <div>
             <a href="/user/{{ Auth::user()->user_name }}">マイページ</a>
