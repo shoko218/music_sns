@@ -52,6 +52,7 @@
                 btnInners:{},
                 audios:{},
                 dataPosts:this.posts,
+                playingIndex:null,
             }
         },
         mounted() {
@@ -65,29 +66,28 @@
         },
         methods:{
             audioBtn(id){//曲を再生/停止する
-                if(id!=null){//検索結果の曲
-                    if(this.audios[id].paused){//止まっている場合
-                        this.stopAllAudios();
-                        this.audios[id].play();
-                        this.$set(this.btnInners,id,stopBtn);
-                        this.audios[id].addEventListener('ended',function(){
-                            this.$set(this.btnInners,id,playBtn);
-                        }.bind(this));
-                    }else{//再生中の場合
-                        this.audios[id].pause();
+                if(this.audios[id].paused){//止まっている場合
+                    this.stopAllAudios();
+                    this.audios[id].play();
+                    this.$set(this.btnInners,id,stopBtn);
+                    this.audios[id].addEventListener('ended',function(){
                         this.$set(this.btnInners,id,playBtn);
-                    }
+                    }.bind(this));
+                    this.playingIndex=id;
+                }else{//再生中の場合
+                    this.stopAudio();
                 }
             },
             stopAllAudios(){//全ての音楽を止める
                 this.$emit('stop-create-post-music');
                 this.$emit('stop-my-music');
-                if(this.audios.length!=0){
-                    this.btnInner=playBtn;
-                    Object.keys(this.audios).forEach(key => {
-                        this.$set(this.btnInners,key,playBtn);
-                        this.audios[key].pause();
-                    });
+                this.stopAudio();
+            },
+            stopAudio(){
+                if(this.playingIndex!=null){
+                    this.audios[this.playingIndex].pause();
+                    this.$set(this.btnInners,this.playingIndex,playBtn);
+                    this.playingIndex!=null;
                 }
             },
             deletePost(id,i){

@@ -32,10 +32,10 @@
         },
         methods:{
             stopShowPostsMusic(){//投稿側の音楽を止める
-                this.$refs.show_posts.stopAllAudios();
+                this.$refs.show_posts.stopAudio();
             },
             stopCreatePostMusic(){//投稿作成側の音楽を止める
-                this.$refs.create_post.stopAllAudios();
+                this.$refs.create_post.stopAudio();
             },
             showImg(imgPath){
                 this.showedImgPath=imgPath;

@@ -13,6 +13,8 @@ import ShowPostsComponent from './components/ShowPostsComponent'
 import HomeTopComponent from './components/HomeTopComponent'
 import SearchComponent from './components/SearchComponent'
 import UserDetailComponent from './components/UserDetailComponent'
+import CreatePlaylistComponent from './components/CreatePlaylistComponent'
+import SearchMusicComponent from './components/SearchMusicComponent'
 
 
 /**
@@ -36,21 +38,6 @@ import UserDetailComponent from './components/UserDetailComponent'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent
+        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent
     },
 });
-
-// window.onload = function onload(){
-//     var $imgElements = document.getElementsByClassName( "post_img_box" );
-//     var $html = $('html');
-//     $html.removeClass('scroll-prevent');
-//     for( var $i = 0; $i < $imgElements.length; $i++ ) {
-//         $imgElements[$i].onclick = function () {
-//             if ($html.classList.contains("scroll-prevent")){
-//                 $html.removeClass('scroll-prevent');
-//             } else {
-//                 $html.addClass('scroll-prevent');
-//             }
-//         }
-//     }
-// }
