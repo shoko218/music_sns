@@ -7,7 +7,7 @@
             <div id="show_playlist_info_detail">
                 <h1>{{playlist.title}}</h1>
                 <p>{{playlist.description}}</p>
-                <p>作成者: <b><a :href="'/user/'+playlist.user.user_name"><img :src="'/storage/user_icons/'+playlist.user.icon_path"> {{playlist.user.name}}@{{playlist.user.user_name}}</a></b></p>
+                <p>作成者:<a :href="'/user/'+playlist.user.user_name"><img :src="'/storage/user_icons/'+playlist.user.icon_path"> {{playlist.user.name}}@{{playlist.user.user_name}}</a></p>
             </div>
         </section>
         <section id="show_playlist_musics">
