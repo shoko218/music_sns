@@ -15,8 +15,10 @@ class DeletePostProcessController extends Controller
             $post=Post::find($request->post_id);
             if ($post!=null&&$post->user_id==Auth::user()->id) {
                 $post->delete();
+                $param=['deleted_id'=>$request->post_id];
+            }else{
+                $param=['deleted_id'=>-1];
             }
-            $param=['deleted_id'=>$request->post_id];
             return $param;
         }
     }

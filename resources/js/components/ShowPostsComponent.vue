@@ -28,7 +28,10 @@
                     <p><a><i class="fas fa-reply"></i></a></p><!--リプライ(☆未実装)-->
                     <p><a><i class="fas fa-retweet"></i></a></p><!--リツイート(☆未実装)-->
                     <p><a><i class="fas fa-star"></i></a></p><!--お気に入り(☆未実装)-->
-                    <p><a @click="deletePost(post['post_id'],i)"><i class="fas fa-trash-alt"></i></a></p><!--投稿削除-->
+                    <p>
+                        <a @click="deletePost(post['post_id'],i)" v-if="userId==post['user_id']"><i class="fas fa-trash-alt"></i></a>
+                        <i v-else>&emsp;</i>
+                    </p><!--投稿削除-->
                 </div>
             </div>
         </div>
@@ -43,8 +46,11 @@
     export default {
         props: {
             posts:{
-                type:Array,
+                type: Array,
             },
+            userId:{
+                type: String,
+            }
         },
         data(){
             return {
@@ -95,10 +101,12 @@
                     'post_id': id,
                 };
                 axios.post('/delete_post_process',post_data).then(res=>{
-                    this.dataPosts.splice(i, 1);
-                    this.$delete(this.postMusics,res.data.deleted_id);
-                    this.$delete(this.btnInners,res.data.deleted_id);
-                    this.$delete(this.audios,res.data.deleted_id);
+                    if(res.data.deleted_id!=-1){
+                        this.dataPosts.splice(i, 1);
+                        this.$delete(this.postMusics,res.data.deleted_id);
+                        this.$delete(this.btnInners,res.data.deleted_id);
+                        this.$delete(this.audios,res.data.deleted_id);
+                    }
                 });
             },
             getPostMusics(){

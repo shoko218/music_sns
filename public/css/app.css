@@ -11271,6 +11271,10 @@ label {
   margin-bottom: 2rem;
 }
 
+.search_parts {
+  width: 100%;
+}
+
 .search_inputs {
   width: 100%;
   max-width: 36rem;
@@ -11400,6 +11404,7 @@ label {
 }
 
 .result_lists {
+  border-top: 1px solid #cccccc;
   margin-bottom: 2rem;
 }
 
@@ -11411,10 +11416,6 @@ label {
 .result_list:hover {
   cursor: pointer;
   opacity: 0.7;
-}
-
-.result_list:first-child {
-  border-top: 1px solid #cccccc;
 }
 
 .result_list .result_list_title {
@@ -11634,6 +11635,10 @@ label {
 
 .post .music_box {
   margin-bottom: 1rem;
+  padding: 1.4rem 2rem;
+  padding-right: 0;
+  border: 1px solid #cccccc;
+  border-radius: 1rem;
 }
 
 .post_music_spinner {
@@ -11643,8 +11648,11 @@ label {
 
 .post .post_action_btns {
   display: flex;
-  justify-content: space-between;
   margin-top: 1.6rem;
+}
+
+.post .post_action_btns :not(:last-child) {
+  margin-right: 25%;
 }
 
 .post .post_action_btns > p {
@@ -11776,6 +11784,147 @@ label {
 
 .users .user_description {
   margin-bottom: 1rem;
+}
+
+#playlist_home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#playlist_home .btns {
+  margin: 3rem 0;
+}
+
+.playlists {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  width: 100%;
+  max-width: 56rem;
+}
+
+.playlist {
+  display: flex;
+  padding: 1.6rem;
+}
+
+.playlist:not(:last-child) {
+  border-bottom: 1px solid #cccccc;
+}
+
+.playlist_icon {
+  width: 5rem;
+  height: 5rem;
+}
+
+.playlist_icon img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.playlist_texts {
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.playlist_info {
+  margin: 1rem 0;
+  display: flex;
+  padding: 1.4rem 2rem;
+  padding-right: 0;
+  border: 1px solid #cccccc;
+  border-radius: 1rem;
+}
+
+.playlist_info:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.playlist_info_img {
+  margin-right: 2rem;
+}
+
+.playlist_info_img > img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.playlist .playlist_action_btns {
+  display: flex;
+  margin-top: 1.6rem;
+}
+
+.playlist .playlist_action_btns :not(:last-child) {
+  margin-right: 25%;
+}
+
+.playlist .playlist_action_btns > p {
+  color: gray;
+}
+
+.playlist .playlist_action_btns > p > a {
+  font-size: 2rem;
+}
+
+#create_playlist {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+#create_playlist label {
+  text-align: left;
+}
+
+#create_playlist_info form,
+#create_playlist_info input,
+#create_playlist_info textarea {
+  width: 100%;
+  max-width: 46rem;
+}
+
+#create_playlist_form {
+  margin-bottom: 3rem;
+}
+
+#create_playlist .btns {
+  margin-bottom: 3rem;
+}
+
+#show_playlist {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#show_playlist_info {
+  margin: 1rem 0;
+  display: flex;
+  padding: 1.4rem 2rem;
+  padding-right: 0;
+}
+
+#show_playlist_info_img {
+  margin-right: 2rem;
+}
+
+#show_playlist_info_img > img {
+  width: 8rem;
+  height: 8rem;
+}
+
+#show_playlist_musics ul {
+  border-top: 1px solid #cccccc;
+}
+
+#show_playlist_musics .music_box {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #cccccc;
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {

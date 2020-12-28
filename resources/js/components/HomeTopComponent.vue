@@ -4,7 +4,7 @@
             <img :src="'/storage/post_imgs/'+showedImgPath" alt="" id="showed_img">
         </div>
         <create-post-component ref="create_post" @stop-show-posts-music="stopShowPostsMusic" :csrf="csrf"></create-post-component>
-        <show-posts-component :posts="posts" ref="show_posts" @stop-create-post-music="stopCreatePostMusic" @show-img="showImg"></show-posts-component>
+        <show-posts-component :posts="posts" :user-id="userId" ref="show_posts" @stop-create-post-music="stopCreatePostMusic" @show-img="showImg" ></show-posts-component>
     </div>
 </template>
 
@@ -24,6 +24,9 @@
                 type: String,
                 required: true,
             },
+            userId:{
+                type: String,
+            }
         },
         data(){
             return {

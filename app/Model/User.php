@@ -66,4 +66,8 @@ class User extends Authenticatable
     public function followers(){
         return $this->hasMany('App\Model\Fflog','to_user_id');
     }
+
+    public function playlists(){
+        return $this->hasMany('App\Model\Playlist');
+    }
 }

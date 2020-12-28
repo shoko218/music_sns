@@ -15,7 +15,8 @@ import SearchComponent from './components/SearchComponent'
 import UserDetailComponent from './components/UserDetailComponent'
 import CreatePlaylistComponent from './components/CreatePlaylistComponent'
 import SearchMusicComponent from './components/SearchMusicComponent'
-
+import ShowPlaylistComponent from './components/ShowPlaylistComponent'
+import draggable from 'vuedraggable'
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,6 +39,6 @@ import SearchMusicComponent from './components/SearchMusicComponent'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent
+        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent,ShowPlaylistComponent
     },
 });

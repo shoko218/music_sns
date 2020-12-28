@@ -88,7 +88,6 @@
                 });
                 this.selectedMusicId=track_id;
                 this.word="";//検索ワードを削除
-                this.$refs.search_music.stopAudio();//検索結果の音楽を止める
                 this.$refs.search_music.reset();//検索結果をリセットする
                 this.showed=false;
             },
@@ -109,7 +108,6 @@
                 this.btnInner=playBtn;
                 this.selectedMusicId=null;
                 this.selectedMusic=null;
-                this.selectedMusicId=null;
             },
             stopAudio(){//再生を止める
                 if(this.selectedAudio!=null){

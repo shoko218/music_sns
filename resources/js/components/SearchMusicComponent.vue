@@ -108,6 +108,7 @@
                 }
             },
             reset(){
+                this.stopAudio();
                 this.word="";//検索ワードを削除
                 this.results.splice(0, this.results.length);//検索結果にまつわる全ての情報を削除する
                 this.results.splice(0, this.results.length);

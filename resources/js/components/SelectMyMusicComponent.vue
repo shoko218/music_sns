@@ -76,7 +76,6 @@
                     this.dataMusicId=res.data.track_id;
                     this.getMusicInfo(res.data.track_id);
                 });
-                this.$refs.search_music.stopAudio();//検索結果の音楽を止める
                 this.$refs.search_music.reset();//検索結果をリセットする
             },
             audioBtn(){//曲を再生/停止する

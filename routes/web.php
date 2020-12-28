@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::prefix('/playlist')->group(function () {
         Route::get('/', 'Main\Playlist\TopController');
+        Route::get('/detail/{playlist_id}', 'Main\Playlist\ShowController');
+        Route::get('/create', 'Main\Playlist\CreateController');
+        Route::post('/create_process', 'Main\Playlist\CreateProcessController');
     });
     Route::prefix('/dm')->group(function () {
         Route::get('/', 'Main\DM\TopController');
