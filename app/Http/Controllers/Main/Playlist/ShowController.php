@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ShowController extends Controller
 {
     public function __invoke($playlist_id){
-        $playlist=Playlist::with('playlist_logs')->find($playlist_id);
+        $playlist=Playlist::with('user')->with('playlist_logs')->find($playlist_id);
         $param=['playlist'=>$playlist];
         return view('main.playlist.detail',$param);
     }

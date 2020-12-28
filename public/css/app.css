@@ -10928,9 +10928,19 @@ a:visited {
   line-height: 5.6rem;
 }
 
-#header #logo > a {
+#header a {
   font-size: 3rem;
-  color: white;
+  color: #fff;
+}
+
+#header #header-btns {
+  display: flex;
+}
+
+#header #header-btns > p {
+  display: block;
+  text-align: right;
+  width: 6rem;
 }
 
 footer {
@@ -11916,6 +11926,12 @@ label {
 #show_playlist_info_img > img {
   width: 8rem;
   height: 8rem;
+}
+
+#show_playlist_info_detail img {
+  height: 1.4rem;
+  width: 1.4rem;
+  border-radius: 0.7rem;
 }
 
 #show_playlist_musics ul {

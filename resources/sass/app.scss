@@ -152,10 +152,16 @@ a:visited{
     >*{
         line-height: $header_h;
     }
-    #logo{
-        >a{
-            font-size: 3rem;
-            color: white;
+    a{
+        font-size: 3rem;
+        color:#fff;
+    }
+    #header-btns{
+        display: flex;
+        >p{
+            display: block;
+            text-align: right;
+            width: 6rem;
         }
     }
 }
@@ -1012,6 +1018,13 @@ label{
             >img{
                 width: 8rem;
                 height: 8rem;
+            }
+        }
+        &_detail{
+            img{
+                height: $normal_fz;
+                width: $normal_fz;
+                border-radius: $normal_fz/2;
             }
         }
     }
