@@ -1,12 +1,27 @@
 <template>
     <div id="create_playlist">
         <div id="create_playlist_info">
-            <form action="/playlist/create_process" id="create_playlist_form" method="post">
+            <form action="/playlist/create_process" id="create_playlist_form" method="post" enctype='multipart/form-data'>
                 <input type="hidden" name="_token" :value="csrf"><!--csrfトークン-->
-                <label for="title">プレイリスト名</label>
-                <input name="title" id="title" type="text">
-                <label for="description">プレイリストの説明</label>
-                <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                <div id="playlist_form">
+                    <div id="input_playlist_image">
+                        <label for="image">
+                            <div class="preview_playlist_img">
+                                <div class="playlist_img">
+                                    <img :src="selectedImg" alt="プレビュー画像" v-if="selectedImg!=null"><!--このセッションで新たに選択した画像がある場合-->
+                                    <img :src="'/storage/playlist_imgs/noimage.png'" alt="プレビュー画像" v-else><!--ない場合-->
+                                </div>
+                            </div>
+                            <input id="image" type="file" name="image" accept="image/jpeg, image/png" class="image" @change="onFileChange($event)">
+                        </label>
+                    </div>
+                    <div id="input_playlist_texts">
+                        <label for="title">プレイリスト名</label>
+                        <input name="title" id="title" type="text">
+                        <label for="description">プレイリストの説明</label>
+                        <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
             </form>
             <div class="btns">
                 <button form="create_playlist_form">登録する</button>
@@ -45,6 +60,9 @@
                 type: String,
                 required: true,
             },
+            errMsgs: {
+                type: Array,
+            },
         },
         data(){
             return {
@@ -53,6 +71,8 @@
                 btnInners:[],
                 playingIndex:null,
                 music_ids:'',
+                dataErrMsgs: this.errMsgs,
+                selectedImg: null
             }
         },
         mounted() {
@@ -87,6 +107,17 @@
                     this.playingIndex=null;
                 }
             },
+            onFileChange(e){//画像が選択された時に、選択した画像のプレビューを表示する
+                const files = e.target.files;
+                if(files.length > 0) {
+                    const file = files[0];
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        this.selectedImg = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
         }
     }
 </script>

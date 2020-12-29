@@ -2,7 +2,8 @@
     <div id="show_playlist">
         <section id="show_playlist_info">
             <div id="show_playlist_info_img">
-                <img src="/storage/playlist_imgs/noimage.png">
+                <img :src="'/storage/playlist_imgs/'+playlist['img_path']" v-if="playlist['img_path']!=null">
+                <img src="/storage/playlist_imgs/noimage.png" v-else>
             </div>
             <div id="show_playlist_info_detail">
                 <h1>{{playlist.title}}</h1>

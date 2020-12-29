@@ -11903,6 +11903,30 @@ label {
   margin-bottom: 3rem;
 }
 
+#create_playlist #playlist_form {
+  display: flex;
+  text-align: left;
+  margin-top: 3rem;
+}
+
+#create_playlist #playlist_form #input_playlist_image {
+  margin-right: 2rem;
+}
+
+#create_playlist #playlist_form #input_playlist_image label:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#create_playlist #playlist_form #input_playlist_image input {
+  display: none;
+}
+
+#create_playlist #playlist_form #input_playlist_image img {
+  width: 8rem;
+  height: 8rem;
+}
+
 #show_playlist {
   width: 100%;
   max-width: 46rem;

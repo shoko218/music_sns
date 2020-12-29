@@ -999,6 +999,25 @@ label{
     .btns{
         margin-bottom: $std_my;
     }
+    #playlist_form{
+        display: flex;
+        text-align: left;
+        margin-top: $std_my;
+        #input_playlist_image{
+            margin-right: 2rem;
+            label:hover{
+                cursor: pointer;
+                opacity: $opacity;
+            }
+            input{
+                display: none;
+            }
+            img{
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+    }
 }
 
 #show_playlist{

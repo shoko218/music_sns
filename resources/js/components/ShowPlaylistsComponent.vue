@@ -10,7 +10,8 @@
                 <p class="playlist_user_name"><b>{{ p['user']['name'] }}</b> {{ "@"+p['user']['user_name'] }}</p><!--ユーザー名-->
                 <div class="playlist_info" :onclick="'location.href=\'/playlist/detail/'+p['id']+'\''" >
                     <div class="playlist_info_img">
-                        <img src="/storage/playlist_imgs/noimage.png">
+                        <img :src="'/storage/playlist_imgs/'+p['img_path']" v-if="p['img_path']!=null">
+                        <img src="/storage/playlist_imgs/noimage.png" v-else>
                     </div>
                     <div class="playlist_info_detail">
                         <h2>{{ p['title'] }}</h2>
