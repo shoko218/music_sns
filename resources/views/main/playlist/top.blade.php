@@ -13,7 +13,8 @@
     <div class="btns">
         <button onclick="location.href='/playlist/create'">新規プレイリストを作成する</button>
     </div>
-    <section class="playlists">
+    <show-playlists-component :playlists='@json($playlists)' user-id={{ Auth::user()->id }}></show-playlists-component>
+    {{-- <section class="playlists">
         @foreach ($playlists as $p)
             <div class="playlist" onclick="location.href='/playlist/detail/{{ $p->id }}'">
                 <div class="playlist_icon"><!--アイコン--->
@@ -45,7 +46,7 @@
                 </div>
             </div>
         @endforeach
-    </section>
+    </section> --}}
 </div>
 @endsection
 

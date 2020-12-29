@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/detail/{playlist_id}', 'Main\Playlist\ShowController');
         Route::get('/create', 'Main\Playlist\CreateController');
         Route::post('/create_process', 'Main\Playlist\CreateProcessController');
+        Route::post('/delete_playlist_process', 'Main\Playlist\DeletePlaylistProcessController');
     });
     Route::prefix('/dm')->group(function () {
         Route::get('/', 'Main\DM\TopController');

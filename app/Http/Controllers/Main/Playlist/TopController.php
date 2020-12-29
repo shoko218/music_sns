@@ -13,7 +13,8 @@ class TopController extends Controller
     public function __invoke(Request $request){
         $follow_ids=Fflog::select('to_user_id')->where('from_user_id',Auth::user()->id)->get();
         $follow_ids[]=Auth::user()->id;
-        $playlists=Playlist::whereIn('user_id', $follow_ids)
+        $playlists=Playlist::with('user')
+        ->whereIn('user_id', $follow_ids)
         ->orderby('id','desc')
         ->get();
         $param=['playlists'=>$playlists];
