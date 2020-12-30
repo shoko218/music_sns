@@ -25,7 +25,7 @@
                 required: true,
             },
             userId:{
-                type: String,
+                type: Number,
             }
         },
         data(){

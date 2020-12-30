@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Playlist extends Model
 {
@@ -22,4 +23,8 @@ class Playlist extends Model
         return $this->hasMany('App\Model\PlaylistLog');
     }
 
+    public function like_playlist_logs(){
+        return $this->belongsToMany('App\Model\User','like_playlist_logs','playlist_id','user_id')
+        ->wherePivot('user_id', Auth::user()->id);
+    }
 }

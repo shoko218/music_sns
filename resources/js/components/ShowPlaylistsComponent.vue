@@ -19,13 +19,15 @@
                     </div>
                 </div>
                 <div class="playlist_action_btns">
-                    <p><a><i class="fas fa-reply"></i></a></p><!--リプライ(☆未実装)-->
-                    <p><a><i class="fas fa-retweet"></i></a></p><!--リツイート(☆未実装)-->
-                    <p><a><i class="fas fa-star"></i></a></p><!--お気に入り(☆未実装)-->
-                    <p>
-                        <a @click="deletePost(p['id'],i)" v-if="userId==p['user_id']"><i class="fas fa-trash-alt"></i></a>
-                        <i v-else>&emsp;</i>
+                    <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
+                    <p><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
+                    <p @click="favBtn(p['id'],i)" v-bind:class="{ 'liked' : p['like_playlist_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
+                    <p @click="deletePlaylist(p['id'],i)" v-if="userId==p['user_id']">
+                        <i class="fas fa-trash-alt"></i>
                     </p><!--投稿削除-->
+                    <p v-else>
+                        <i>&emsp;</i>
+                    </p>
                 </div>
             </div>
         </div>
@@ -35,8 +37,12 @@
 <script>
     export default {
         props: {
-            playlists:Array,
-            userId:String,
+            playlists:{
+                type:Array,
+            },
+            userId:{
+                type:String,
+            },
         },
         data(){
             return {
@@ -44,7 +50,7 @@
             }
         },
         methods:{
-            deletePost(id,i){
+            deletePlaylist(id,i){
                 var post_data = {
                     'playlist_id': id,
                 };
@@ -54,6 +60,14 @@
                     }
                 });
             },
+            favBtn(id,i){
+                var post_data = {
+                    'playlist_id': id,
+                };
+                axios.post('/playlist/like_playlist_process',post_data).then(res=>{
+                    this.$set(this.dataPlaylists[i],`like_playlist_logs`,res.data.like_playlist_logs);
+                });
+            }
         }
     }
 </script>

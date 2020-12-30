@@ -30,7 +30,7 @@
                 <button class="reverse_btn" @click="followBtn()" v-else>フォローする</button>
             </div>
         </section>
-        <show-posts-component :posts="posts" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="posts!=null"></show-posts-component>
+        <show-posts-component :posts="posts" :user-id="myId" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="posts!=null"></show-posts-component>
     </div>
 </template>
 
@@ -55,7 +55,7 @@
             },
             myId:{
                 type:Number,
-            }
+            },
         },
         data(){
             return {

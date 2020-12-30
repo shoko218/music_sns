@@ -11671,10 +11671,15 @@ label {
 
 .post .post_action_btns > p {
   color: gray;
+  font-size: 2rem;
 }
 
-.post .post_action_btns > p > a {
-  font-size: 2rem;
+.post .post_action_btns > p :hover {
+  cursor: pointer;
+}
+
+.post .post_action_btns .liked {
+  color: #ff5387;
 }
 
 #create_post #post_media_btns {
@@ -11879,10 +11884,15 @@ label {
 
 .playlist .playlist_action_btns > p {
   color: gray;
+  font-size: 2rem;
 }
 
-.playlist .playlist_action_btns > p > a {
-  font-size: 2rem;
+.playlist .playlist_action_btns > p :hover {
+  cursor: pointer;
+}
+
+.playlist .playlist_action_btns .liked {
+  color: #ff5387;
 }
 
 #create_playlist {

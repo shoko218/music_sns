@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', 'Main\Playlist\CreateController');
         Route::post('/create_process', 'Main\Playlist\CreateProcessController');
         Route::post('/delete_playlist_process', 'Main\Playlist\DeletePlaylistProcessController');
+        Route::post('/like_playlist_process', 'Main\Playlist\LikePlaylistProcessController');
     });
     Route::prefix('/dm')->group(function () {
         Route::get('/', 'Main\DM\TopController');
@@ -46,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::post('/send_post_process', 'Main\SendPostProcessController');
     Route::post('/delete_post_process', 'Main\DeletePostProcessController');
+    Route::post('/like_post_process', 'Main\LikePostProcessController');
 });
 
 Route::prefix('/api')->group(function(){

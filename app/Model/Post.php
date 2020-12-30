@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -31,5 +32,9 @@ class Post extends Model
     );
     public function user(){
         return $this->belongsTo('App\Model\User');
+    }
+    public function like_post_logs(){
+        return $this->belongsToMany('App\Model\User','like_post_logs','post_id','user_id')
+        ->wherePivot('user_id', Auth::user()->id);
     }
 }

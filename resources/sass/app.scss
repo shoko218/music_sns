@@ -803,9 +803,13 @@ label{
         }
         >p{
             color: gray;
-            >a{
-                font-size: 2rem;
+            font-size: 2rem;
+            :hover{
+                cursor:pointer;
             }
+        }
+        .liked{
+            color:rgb(255, 83, 135)
         }
     }
 }
@@ -973,16 +977,20 @@ label{
         }
     }
     .playlist_action_btns{
-            display: flex;
-            margin-top: 1.6rem;
-            :not(:last-child){
-                margin-right: 25%;
+        display: flex;
+        margin-top: 1.6rem;
+        :not(:last-child){
+            margin-right: 25%;
+        }
+        >p{
+            color: gray;
+            font-size: 2rem;
+            :hover{
+                cursor:pointer;
             }
-            >p{
-                color: gray;
-                >a{
-                    font-size: 2rem;
-            }
+        }
+        .liked{
+            color:rgb(255, 83, 135)
         }
     }
 }

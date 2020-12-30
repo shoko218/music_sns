@@ -14,6 +14,7 @@ class TopController extends Controller
         $follow_ids=Fflog::select('to_user_id')->where('from_user_id',Auth::user()->id)->get();
         $follow_ids[]=Auth::user()->id;
         $playlists=Playlist::with('user')
+        ->with('like_playlist_logs')
         ->whereIn('user_id', $follow_ids)
         ->orderby('id','desc')
         ->get();
