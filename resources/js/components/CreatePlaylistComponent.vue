@@ -6,8 +6,8 @@
                 <div id="playlist_form">
                     <div id="input_playlist_image">
                         <label for="image">
-                            <div class="preview_playlist_img">
-                                <div class="playlist_img">
+                            <div id="preview_playlist_img">
+                                <div id="playlist_img">
                                     <img :src="selectedImg" alt="プレビュー画像" v-if="selectedImg!=null"><!--このセッションで新たに選択した画像がある場合-->
                                     <img :src="'/storage/playlist_imgs/noimage.png'" alt="プレビュー画像" v-else><!--ない場合-->
                                 </div>
