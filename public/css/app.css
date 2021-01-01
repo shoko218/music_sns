@@ -11481,7 +11481,7 @@ label {
   padding-right: 6rem;
 }
 
-#user_detail .profile_infos {
+#user_detail #profile_infos {
   width: 80%;
   max-width: 64rem;
   display: flex;
@@ -11489,28 +11489,28 @@ label {
   align-items: center;
 }
 
-#user_detail .profile_infos .profile_text_infos {
+#user_detail #profile_infos .profile_text_infos {
   margin-bottom: 2rem;
 }
 
-#user_detail .profile_infos .profile_text_infos > * {
+#user_detail #profile_infos .profile_text_infos > * {
   margin-bottom: 1rem;
   text-align: center;
 }
 
-#user_detail .profile_infos .profile_text_infos h1 {
+#user_detail #profile_infos .profile_text_infos h1 {
   font-size: 2rem;
 }
 
-#user_detail .profile_infos .profile_text_infos h2 {
+#user_detail #profile_infos .profile_text_infos h2 {
   font-size: 1.6rem;
 }
 
-#user_detail .profile_infos .profile_text_infos p {
+#user_detail #profile_infos .profile_text_infos p {
   font-size: 1.4rem;
 }
 
-#user_detail .profile_infos .btns {
+#user_detail #profile_infos .btns {
   margin-bottom: 4rem;
 }
 
@@ -11525,6 +11525,29 @@ label {
 
 #user_detail .not_set_my_music_text a {
   text-decoration: underline;
+}
+
+#user_detail #user_posts {
+  width: 100%;
+  max-width: 56rem;
+}
+
+#user_detail #user_posts .tabs {
+  display: flex;
+}
+
+#user_detail #user_posts .tabs > button {
+  min-width: 0;
+  width: 25%;
+  height: auto;
+  background: white;
+  color: #971BE7;
+  border-radius: 0;
+  border-bottom: 0.4rem solid transparent;
+}
+
+#user_detail #user_posts .tabs .active_tab {
+  border-bottom: 0.4rem solid #971BE7;
 }
 
 #edit_mypage .edit_profile_form_parts {

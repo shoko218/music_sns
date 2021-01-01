@@ -13,7 +13,7 @@
     <div class="btns">
         <button onclick="location.href='/playlist/create'">新規プレイリストを作成する</button>
     </div>
-    <show-playlists-component :playlists='@json($playlists)' user-id={{ Auth::user()->id }}></show-playlists-component>
+    <show-playlists-component :playlists='@json($playlists)' :user-id='@json(Auth::user()->id)'></show-playlists-component>
 </div>
 @endsection
 

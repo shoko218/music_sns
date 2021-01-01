@@ -3,7 +3,7 @@
         <div id='showed_img_bg' @click="disappearedImg()" v-if="showedImgPath!=null">
             <img :src="'/storage/post_imgs/'+showedImgPath" alt="" id="showed_img">
         </div>
-        <section class="profile_infos">
+        <section id="profile_infos">
             <p v-if="user.icon_path!=null"><img :src="'/storage/user_icons/'+user.icon_path" class="user_detail_icon"></p>
             <p v-else><img src="/image/somethings/noimage_user.jpg" class="user_detail_icon"></p>
             <div class="profile_text_infos">
@@ -30,24 +30,47 @@
                 <button class="reverse_btn" @click="followBtn()" v-else>フォローする</button>
             </div>
         </section>
-        <show-posts-component :posts="posts" :user-id="myId" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="posts!=null"></show-posts-component>
+        <section id="user_posts">
+            <div class="tabs"><!--ステータス別タブ-->
+                <button v-bind:class="[currentId==0 ? 'active_tab' : 'inactive_tab']" @click="tab(0)" class="tab">投稿</button>
+                <button v-bind:class="[currentId==1 ? 'active_tab' : 'inactive_tab']" @click="tab(1)" class="tab">プレイリスト</button>
+                <button v-bind:class="[currentId==2 ? 'active_tab' : 'inactive_tab']" @click="tab(2)" class="tab">お気に入り<br>投稿</button>
+                <button v-bind:class="[currentId==3 ? 'active_tab' : 'inactive_tab']" @click="tab(3)" class="tab">お気に入り<br>プレイリスト</button>
+            </div>
+            <show-posts-component :posts="posts" :user-id="myId" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="currentId==0"></show-posts-component>
+            <show-playlists-component :playlists="playlists" :user-id="myId" v-else-if="currentId==1"></show-playlists-component>
+            <show-liked-posts-component :posts="likedPosts" :user-id="myId" @unfav="unfavPost" ref="show_liked_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-else-if="currentId==2"></show-liked-posts-component>
+            <show-liked-playlists-component :playlists="likedPlaylists" :user-id="myId" @unfav="unfavPlaylist" ref="show_liked_playlists" v-else-if="currentId==3"></show-liked-playlists-component>
+        </section>
     </div>
 </template>
 
 <script>
     import ShowPostsComponent from './ShowPostsComponent'
+    import ShowPlaylistsComponent from './ShowPlaylistsComponent'
+    import ShowLikedPostsComponent from './ShowPostsComponent'
+    import ShowLikedPlaylistsComponent from './ShowPlaylistsComponent'
     const playBtn='<i class="far fa-play-circle"></i>';
     const stopBtn='<i class="far fa-pause-circle"></i>';
 
     export default {
         components:{
-            ShowPostsComponent
+            ShowPostsComponent,ShowPlaylistsComponent,ShowLikedPostsComponent,ShowLikedPlaylistsComponent
         },
         props: {
             user:{
                 type:Object,
             },
             posts:{
+                type:Array,
+            },
+            likedPosts:{
+                type:Array,
+            },
+            playlists:{
+                type:Array,
+            },
+            likedPlaylists:{
                 type:Array,
             },
             isFollow:{
@@ -65,6 +88,11 @@
                 dataIsFollow:this.isFollow,
                 followNum:null,
                 followerNum:null,
+                currentId:0,
+                dataPosts:this.posts,
+                dataLikedPosts:this.likedPosts,
+                dataPlaylists:this.playlists,
+                dataLikedPlaylists:this.likedPlaylists,
             }
         },
         mounted(){
@@ -82,7 +110,14 @@
             },
             audioBtn(){
                 if(this.myMusic.paused){//止まっている場合
-                    this.$refs.show_posts.stopAllAudios();
+                    switch (this.currentId) {
+                        case 0:
+                            this.$refs.show_posts.stopAudio();
+                            break;
+                        case 2:
+                            this.$refs.show_liked_posts.stopAudio();
+                            break;
+                    }
                     this.myMusic.play();
                     this.btnInner=stopBtn;
                     this.myMusic.addEventListener('ended',function(){
@@ -115,6 +150,49 @@
                     this.dataIsFollow=res.data.is_follow;
                     this.getFollowRelation()
                 });
+            },
+            tab(idx){
+                switch (this.currentId) {
+                    case 0:
+                        this.$refs.show_posts.stopAudio();
+                        break;
+                    case 2:
+                        this.$refs.show_liked_posts.stopAudio();
+                        break;
+                }
+                switch (idx) {
+                    case 0:
+                        axios.get('/api/get_user_posts?user_id='+this.user.id).then(res=>{
+                            this.dataPosts.splice(0, this.dataPosts.length)
+                            this.dataPosts.push(... res.data.posts);
+                        });
+                        break;
+                    case 1:
+                        axios.get('/api/get_user_playlists?user_id='+this.user.id).then(res=>{
+                            this.dataPlaylists.splice(0, this.dataPlaylists.length)
+                            this.dataPlaylists.push(... res.data.playlists);
+                        });
+                        break;
+                    case 2:
+                        axios.get('/api/get_user_liked_posts?user_id='+this.user.id).then(res=>{
+                            this.dataLikedPosts.splice(0, this.dataLikedPosts.length)
+                            this.dataLikedPosts.push(... res.data.posts);
+                        });
+                        break;
+                    case 3:
+                        axios.get('/api/get_user_liked_playlists?user_id='+this.user.id).then(res=>{
+                            this.dataLikedPlaylists.splice(0, this.dataLikedPlaylists.length)
+                            this.dataLikedPlaylists.push(... res.data.playlists);
+                        });
+                        break;
+                }
+                this.currentId=idx;
+            },
+            unfavPost (idx) {
+                this.$refs.show_liked_posts.hidePost(idx);
+            },
+            unfavPlaylist (idx) {
+                this.$refs.show_liked_playlists.hidePlaylist(idx);
             },
         }
     }

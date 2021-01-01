@@ -641,7 +641,7 @@ label{
         margin-bottom: 4rem;
         padding-right: 6rem;
     }
-    .profile_infos{
+    #profile_infos{
         width: 80%;
         max-width: 64rem;
         display: flex;
@@ -667,6 +667,7 @@ label{
             margin-bottom: 4rem;
         }
     }
+
     .btns{
         margin-bottom: 2rem;
     }
@@ -675,6 +676,26 @@ label{
         margin-bottom: 2rem;
         a{
             text-decoration: underline;
+        }
+    }
+
+    #user_posts{
+        width: 100%;
+        max-width: 56rem;
+        .tabs{
+            display: flex;
+            >button{
+                min-width: 0;
+                width: 25%;
+                height: auto;
+                background: white;
+                color:$grad_center_c;
+                border-radius: 0;
+                border-bottom: 0.4rem solid transparent;
+            }
+            .active_tab{
+                border-bottom: 0.4rem solid $grad_center_c;
+            }
         }
     }
 }

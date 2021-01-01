@@ -1,6 +1,6 @@
 <template>
     <section id="create_post">
-        <form id="create_post_form" action="/send_post_process" method="post" enctype='multipart/form-data'><!--投稿フォーム-->
+        <form id="create_post_form" action="/home/send_post_process" method="post" enctype='multipart/form-data'><!--投稿フォーム-->
             <p>投稿する</p>
             <input type="hidden" name="_token" :value="csrf"><!--csrfトークン-->
             <textarea name="contents" id="" cols="30" rows="6" placeholder=""></textarea>

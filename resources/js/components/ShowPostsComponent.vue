@@ -1,6 +1,6 @@
 <template><!--投稿を表示-->
     <section class="posts">
-        <div class="post" v-for="(post,i) in dataPosts" :key="post['id']">
+        <div class="post" v-for="(post,idx) in dataPosts" :key="post['id']">
             <div class="post_icon"><!--アイコン--->
                 <a :href="'/user/'+post['user']['user_name']">
                     <img :src="'/storage/user_icons/'+post['user']['icon_path']" alt="">
@@ -27,8 +27,8 @@
                 <div class="post_action_btns">
                     <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
                     <p><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
-                    <p @click="favBtn(post['id'],i)" v-bind:class="{ 'liked' : post['like_post_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
-                    <p @click="deletePost(post['id'],i)" v-if="userId==post['user_id']">
+                    <p @click="favBtn(post['id'],idx)" v-bind:class="{ 'liked' : post['like_post_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
+                    <p @click="deletePost(post['id'],idx)" v-if="userId==post['user_id']">
                         <i class="fas fa-trash-alt"></i>
                     </p><!--投稿削除-->
                     <p v-else>
@@ -98,13 +98,13 @@
                     this.playingIndex!=null;
                 }
             },
-            deletePost(id,i){
+            deletePost(id,idx){
                 var post_data = {
                     'post_id': id,
                 };
-                axios.post('/delete_post_process',post_data).then(res=>{
+                axios.post('/home/delete_post_process',post_data).then(res=>{
                     if(res.data.deleted_id!=-1&&res.data.deleted_id!=null){
-                        this.dataPosts.splice(i, 1);
+                        this.hidePost(idx)
                         this.$delete(this.postMusics,res.data.deleted_id);
                         this.$delete(this.btnInners,res.data.deleted_id);
                         this.$delete(this.audios,res.data.deleted_id);
@@ -112,23 +112,29 @@
                 });
             },
             getPostMusics(){
-                this.dataPosts.forEach(p => {
-                    if(p['music_track_id']!=null){
-                        this.$set(this.btnInners,p['id'],playBtn);
-                        this.$set(this.audios,p['id'],new Audio(p['music_url']));
+                this.dataPosts.forEach(post => {
+                    if(post['music_track_id']!=null){
+                        this.$set(this.btnInners,post['id'],playBtn);
+                        this.$set(this.audios,post['id'],new Audio(post['music_url']));
                     }
                 });
             },
             showImg(imgPath){
                 this.$emit('show-img',imgPath);
             },
-            favBtn(id,i){
+            favBtn(id,idx){
                 var post_data = {
                     'post_id': id,
                 };
-                axios.post('/like_post_process',post_data).then(res=>{
-                    this.$set(this.dataPosts[i],`like_post_logs`,res.data.like_post_logs);
+                axios.post('/home/like_post_process',post_data).then(res=>{
+                    this.$set(this.dataPosts[idx],`like_post_logs`,res.data.like_post_logs);
+                    if(res.data.action == 0){
+                        this.$emit('unfav',idx);
+                    }
                 });
+            },
+            hidePost(idx){
+                this.dataPosts.splice(idx, 1);
             }
         }
     }

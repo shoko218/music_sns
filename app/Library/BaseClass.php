@@ -1,13 +1,7 @@
 <?php
 namespace App\Library;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Model\Cart;
-use App\Model\Order_log;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cookie;
-use App\Model\Product;
-use Illuminate\Database\Eloquent\Collection;
+use App\Model\Post;
+use App\Model\Playlist;
 
 
 class BaseClass{//共用関数クラス
@@ -52,5 +46,48 @@ class BaseClass{//共用関数クラス
             $results[0]=array('trackId'=>-1);
         }
         return $results;
+    }
+
+    public static function get_user_posts($user_id){
+        $posts=Post::with('user')
+        ->with('like_post_logs')
+        ->where('user_id',$user_id)
+        ->orderby('id','desc')
+        ->get();
+        return $posts;
+    }
+
+    public static function get_user_liked_posts($user_id){
+        $posts=Post::join('like_post_logs as lpl', 'lpl.post_id', '=', 'posts.id')
+        ->whereHas('like_post_logs', function($q) use($user_id){
+            $q->where('user_id',$user_id);
+        })
+        ->orderBy('lpl.id','desc')
+        ->select('posts.*')
+        ->where('lpl.user_id', $user_id)
+        ->with('user')
+        ->with('like_post_logs')
+        ->get();
+        return $posts;
+    }
+
+    public static function get_user_playlists($user_id){
+        $playlists=Playlist::with('user')
+        ->with('like_playlist_logs')
+        ->where('user_id', $user_id)
+        ->orderby('id','desc')
+        ->get();
+        return $playlists;
+    }
+
+    public static function get_user_liked_playlists($user_id){
+        $playlists=Playlist::join('like_playlist_logs as lpl', 'lpl.playlist_id', '=', 'playlists.id')
+        ->orderBy('lpl.id','desc')
+        ->select('playlists.*')
+        ->where('lpl.user_id', $user_id)
+        ->with('like_playlist_logs')
+        ->with('user')
+        ->get();
+        return $playlists;
     }
 }
