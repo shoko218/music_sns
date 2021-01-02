@@ -11062,7 +11062,7 @@ button:hover,
 }
 
 .msg_box {
-  margin: 8.6rem 2rem 3rem;
+  margin: 3rem 2rem;
   font-size: 1.4rem;
   max-width: 76.8rem;
 }
@@ -11441,6 +11441,32 @@ label {
   font-size: 1.2rem;
 }
 
+.action_btns {
+  display: flex;
+  margin-top: 1.6rem;
+}
+
+.action_btns :not(:last-child) {
+  margin-right: 25%;
+}
+
+.action_btns > p {
+  color: gray;
+  font-size: 2rem;
+}
+
+.action_btns > p :hover {
+  cursor: pointer;
+}
+
+.action_btns .liked {
+  color: #ff5387;
+}
+
+.action_btns .reposted {
+  color: #55ad43;
+}
+
 #login .check {
   margin-bottom: 2rem;
 }
@@ -11626,8 +11652,11 @@ label {
 }
 
 .post {
-  display: flex;
   padding: 1.6rem;
+}
+
+.post_inner {
+  display: flex;
 }
 
 .post:not(:last-child) {
@@ -11648,10 +11677,6 @@ label {
 .post_texts {
   margin-left: 1rem;
   width: 100%;
-}
-
-.post_contents {
-  margin-bottom: 1rem;
 }
 
 .post_img_box {
@@ -11683,26 +11708,10 @@ label {
   line-height: 6rem;
 }
 
-.post .post_action_btns {
-  display: flex;
-  margin-top: 1.6rem;
-}
-
-.post .post_action_btns :not(:last-child) {
-  margin-right: 25%;
-}
-
-.post .post_action_btns > p {
-  color: gray;
-  font-size: 2rem;
-}
-
-.post .post_action_btns > p :hover {
-  cursor: pointer;
-}
-
-.post .post_action_btns .liked {
-  color: #ff5387;
+.post_msg {
+  margin-left: 6rem;
+  color: #333;
+  font-size: 1.2rem;
 }
 
 #create_post #post_media_btns {
@@ -11819,6 +11828,11 @@ label {
   border-radius: 50%;
 }
 
+.users .user_texts {
+  margin-left: 1rem;
+  width: 100%;
+}
+
 .users .user_infos {
   margin-left: 1rem;
   width: 100%;
@@ -11846,8 +11860,11 @@ label {
 }
 
 .playlist {
-  display: flex;
   padding: 1.6rem;
+}
+
+.playlist_inner {
+  display: flex;
 }
 
 .playlist:not(:last-child) {
@@ -11896,26 +11913,10 @@ label {
   margin-bottom: 0.8rem;
 }
 
-.playlist .playlist_action_btns {
-  display: flex;
-  margin-top: 1.6rem;
-}
-
-.playlist .playlist_action_btns :not(:last-child) {
-  margin-right: 25%;
-}
-
-.playlist .playlist_action_btns > p {
-  color: gray;
-  font-size: 2rem;
-}
-
-.playlist .playlist_action_btns > p :hover {
-  cursor: pointer;
-}
-
-.playlist .playlist_action_btns .liked {
-  color: #ff5387;
+.playlist_msg {
+  margin-left: 6rem;
+  color: #333;
+  font-size: 1.2rem;
 }
 
 #create_playlist {

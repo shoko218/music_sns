@@ -5,6 +5,7 @@ namespace App\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -54,6 +55,24 @@ class User extends Authenticatable
         'my_music_track_id' => ['nullable','string'],//イチオシ音楽
         'icon'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],//アイコン
     );
+
+    protected $appends = array('follow','followed');
+
+    public function getFollowAttribute(){
+        if(Fflog::select('*')->where('to_user_id','=',$this->id)->where('from_user_id','=',Auth::user()->id)->first()!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFollowedAttribute(){
+        if (Fflog::select('*')->where('from_user_id', '=', $this->id)->where('to_user_id', '=', Auth::user()->id)->first()!=null) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public function posts(){
         return $this->hasMany('App\Model\Post');

@@ -23,9 +23,17 @@ class UserDetailController extends Controller
         }
         $posts=BaseClass::get_user_posts($user->id);
 
+        $posts=$posts->filter(function($post){
+            return (($post['repost_id'] == null) || ($post['repost_id'] != null && $post['repost']['user_id'] != Auth::user()->id));
+        })->values();//自分の投稿の拡散投稿ではない
+
         $liked_posts=BaseClass::get_user_liked_posts($user->id);
 
         $playlists=BaseClass::get_user_playlists($user->id);
+
+        $playlists=$playlists->filter(function($playlists){
+            return (($playlists['repost_id'] == null) || ($playlists['repost_id'] != null && $playlists['repost']['user_id'] != Auth::user()->id));
+        })->values();//自分の投稿の拡散投稿ではない
 
         $liked_playlists=BaseClass::get_user_liked_playlists($user->id);
 

@@ -18,7 +18,11 @@ class TopController extends Controller
         ->whereIn('user_id', $follow_ids)
         ->orderby('id','desc')
         ->get();
-        $param=['playlists'=>$playlists];
+        $filtered_playlists=$playlists->filter(function($playlist){
+            return (($playlist['repost_id'] == null) || ($playlist['repost_id'] != null && $playlist['user_id'] != Auth::user()->id && $playlist['repost']['user']['follow'] == false && $playlist['repost']['user']['id'] != Auth::user()->id));
+        })->values();
+        //リツイートじゃない or リツイートかつ自分のリツイートではないかつリツイート先がフォロワーと自分ではない
+        $param=['playlists' => $filtered_playlists];
         return view('main.playlist.top',$param);
     }
 }

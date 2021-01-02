@@ -11,14 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class TopController extends Controller
 {
     public function __invoke(Request $request){//ホーム
-        $follow_ids=Fflog::select('to_user_id')->where('from_user_id',Auth::user()->id)->get();
-        $follow_ids[]=Auth::user()->id;
-        $posts=Post::with('user')
+        $user_id=Auth::user()->id;
+        $follow_ids=Fflog::select('to_user_id')->where('from_user_id',$user_id)->get();
+        $follow_ids[]=$user_id;
+        $posts=Post::join('users','users.id','=','posts.user_id')
+        ->select('posts.*')
+        ->with('user')
         ->with('like_post_logs')
         ->whereIn('user_id', $follow_ids)
         ->orderby('id','desc')
         ->get();
-        $param=['posts'=>$posts];
+        $filtered_posts=$posts->filter(function($post){
+            return (($post['repost_id'] == null) || ($post['repost_id'] != null && $post['user_id'] != Auth::user()->id && $post['repost']['user']['follow'] == false && $post['repost']['user']['id'] != Auth::user()->id ));
+        })->values();
+        //リツイートじゃない or リツイートかつ自分のリツイートではないかつリツイート先がフォロワーと自分ではない
+        $param=['posts'=>$filtered_posts];
         return view('main.home.top',$param);
     }
 }

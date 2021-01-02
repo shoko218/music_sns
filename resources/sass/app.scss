@@ -274,7 +274,7 @@ button:hover,.button:hover{
 }
 
 .msg_box{
-    margin: $std_my+$header_h $std_mx $std_my;
+    margin: $std_my $std_mx;
     font-size: $normal_fz;
     max-width: 76.8rem;
     button{
@@ -604,6 +604,29 @@ label{
     }
 }
 
+.action_btns{
+    display: flex;
+    margin-top: 1.6rem;
+    :not(:last-child){
+        margin-right: 25%;
+    }
+    >p{
+        color: gray;
+        font-size: 2rem;
+        :hover{
+            cursor:pointer;
+        }
+    }
+
+    .liked{
+        color:rgb(255, 83, 135)
+    }
+
+    .reposted{
+        color:rgb(85, 173, 67)
+    }
+}
+
 #login{
     .check{
         margin-bottom: 2rem;
@@ -771,8 +794,10 @@ label{
 }
 
 .post{
-    display: flex;
     padding: $std_px;
+    &_inner{
+        display: flex;
+    }
     &:not(:last-child){
         border-bottom: 1px solid $area_border_c;
     }
@@ -788,9 +813,6 @@ label{
     &_texts{
         margin-left: 1rem;
         width: 100%;
-    }
-    &_contents{
-        margin-bottom: 1rem;
     }
     &_img_box{
         width: 100%;
@@ -816,22 +838,10 @@ label{
         font-size: 4rem;
         line-height: 6rem;
     }
-    .post_action_btns{
-        display: flex;
-        margin-top: 1.6rem;
-        :not(:last-child){
-            margin-right: 25%;
-        }
-        >p{
-            color: gray;
-            font-size: 2rem;
-            :hover{
-                cursor:pointer;
-            }
-        }
-        .liked{
-            color:rgb(255, 83, 135)
-        }
+    &_msg{
+        margin-left: 6rem;
+        color: #333;
+        font-size: 1.2rem;
     }
 }
 
@@ -930,6 +940,10 @@ label{
                 border-radius: 50%;
             }
         }
+        &_texts{
+            margin-left: 1rem;
+            width: 100%;
+        }
         &_infos{
                 margin-left: 1rem;
                 width: 100%;
@@ -956,8 +970,10 @@ label{
     max-width: 56rem;
 }
 .playlist{
-    display: flex;
     padding: $std_px;
+    &_inner{
+        display: flex;
+    }
     &:not(:last-child){
         border-bottom: 1px solid $area_border_c;
     }
@@ -997,22 +1013,10 @@ label{
             }
         }
     }
-    .playlist_action_btns{
-        display: flex;
-        margin-top: 1.6rem;
-        :not(:last-child){
-            margin-right: 25%;
-        }
-        >p{
-            color: gray;
-            font-size: 2rem;
-            :hover{
-                cursor:pointer;
-            }
-        }
-        .liked{
-            color:rgb(255, 83, 135)
-        }
+    &_msg{
+        margin-left: 6rem;
+        color: #333;
+        font-size: 1.2rem;
     }
 }
 

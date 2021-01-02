@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/send_post_process', 'Main\Home\SendPostProcessController');
         Route::post('/delete_post_process', 'Main\Home\DeletePostProcessController');
         Route::post('/like_post_process', 'Main\Home\LikePostProcessController');
+        Route::post('/repost_process', 'Main\Home\RepostProcessController');
     });
     Route::prefix('/notification')->group(function () {
         Route::get('/', 'Main\Notification\TopController');
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/create_process', 'Main\Playlist\CreateProcessController');
         Route::post('/delete_playlist_process', 'Main\Playlist\DeletePlaylistProcessController');
         Route::post('/like_playlist_process', 'Main\Playlist\LikePlaylistProcessController');
+        Route::post('/repost_playlist_process', 'Main\Playlist\RepostPlaylistProcessController');
     });
     Route::prefix('/dm')->group(function () {
         Route::get('/', 'Main\DM\TopController');

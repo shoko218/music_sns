@@ -16,12 +16,12 @@
                 @foreach ($user->follows as $f)
                     <li class="user">
                         <a href="/user/{{ $f->follow->user_name }}">
-                            <div class="post_icon">
+                            <div class="user_icon">
                                 <img src="/storage/user_icons/{{ $f->follow->icon_path }}" alt="">
                             </div>
-                            <div class="post_texts">
-                                <p class="post_user_name"><b>{{ $f->follow->name }}</b>　{{ "@".$f->follow->user_name }}</p>
-                                <p class="post_contents">{{ $f->follow->self_introduction }}</p>
+                            <div class="user_texts">
+                                <p class="user_name"><b>{{ $f->follow->name }}</b>　{{ "@".$f->follow->user_name }}</p>
+                                <p class="user_contents">{{ $f->follow->self_introduction }}</p>
                             </div>
                         </a>
                     </li>

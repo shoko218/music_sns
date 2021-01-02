@@ -21,6 +21,8 @@ class Post extends Model
         'reply_post_id',
     ];
 
+    protected $appends = array('reposted','repost');
+
     public static $post_rules=array(
         'contents'=>['required', 'string', 'max:200'],
         'image'=>['nullable','file','mimes:jpeg,png,jpg','max:10240'],
@@ -30,9 +32,33 @@ class Post extends Model
     public static $repost_rules=array(
         'repost_id'=>['required','integer']
     );
+
+    public function getRepostedAttribute(){
+        $repost=Post::where('repost_id',$this->id)
+        ->where('user_id',Auth::user()->id)
+        ->first();
+        if($repost!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getRepostAttribute(){
+        if($this->repost_id!=null){
+            $post=Post::with('user')
+            ->with('like_post_logs')
+            ->find($this->repost_id);
+            return $post;
+        }else{
+            return null;
+        }
+    }
+
     public function user(){
         return $this->belongsTo('App\Model\User');
     }
+
     public function like_post_logs(){
         return $this->belongsToMany('App\Model\User','like_post_logs','post_id','user_id')
         ->wherePivot('user_id', Auth::user()->id);
