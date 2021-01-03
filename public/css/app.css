@@ -11058,7 +11058,7 @@ button:hover,
 }
 
 .contents {
-  padding: 5.6rem 0 5.6rem;
+  margin: 5.6rem 0 5.6rem;
 }
 
 .msg_box {
@@ -11680,6 +11680,10 @@ label {
   width: 100%;
 }
 
+.post_contents {
+  margin-bottom: 1rem;
+}
+
 .post_img_box {
   width: 100%;
   padding-top: 75%;
@@ -11700,7 +11704,7 @@ label {
 .post .music_box {
   margin-bottom: 1rem;
   padding: 1.4rem 0;
-  border: 1px solid #cccccc;
+  border: 0.1rem solid #cccccc;
   border-radius: 1rem;
 }
 
@@ -11715,57 +11719,108 @@ label {
   font-size: 1.2rem;
 }
 
-.post_detail {
-  display: flex;
-  justify-content: center;
+.post_show_replies_btn {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 1.6rem;
 }
 
-.post_detail_inner {
+.post_show_replies_btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.replie_chain_post {
+  padding-top: 1.6rem;
+}
+
+#post_detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100%;
+}
+
+#post_detail #main_post {
+  display: block;
+  padding-top: 5.6rem;
+  margin-top: -5.6rem;
+}
+
+#post_detail .post_detail_inner {
   width: 100%;
   max-width: 56rem;
   display: flex;
   flex-direction: column;
-  padding: 1.6rem;
 }
 
-.post_detail_profile {
-  display: flex;
-}
-
-.post_detail_profile .post_user_name {
-  margin-left: 1rem;
-  line-height: 2.5rem;
-  font-size: 1.8rem;
-}
-
-.post_detail_contents {
-  margin: 1rem 0;
-  font-size: 2rem;
-}
-
-.post_detail .post_msg {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-  margin-left: 0;
-}
-
-.post_detail .action_btns {
+#post_detail .post_detail_inner > .action_btns {
   border-top: 0.1rem solid #cccccc;
   border-bottom: 0.1rem solid #cccccc;
   padding: 1rem 0;
 }
 
-.post_detail .action_btns > * {
+#post_detail .post_detail_inner > .action_btns > * {
   margin: 0;
   width: 25%;
   text-align: center;
+  font-size: 2.4rem;
 }
 
-.post_detail .music_box {
+#post_detail .post_detail_datas {
+  padding: 3rem 1.6rem 0;
+}
+
+#post_detail .post_detail_profile {
+  display: flex;
+}
+
+#post_detail .post_detail_profile .post_user_name {
+  margin-left: 1rem;
+  line-height: 2.5rem;
+  font-size: 1.8rem;
+}
+
+#post_detail .post_detail_contents {
+  margin: 1rem 0;
+  font-size: 2rem;
+}
+
+#post_detail .post_msg {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-left: 0;
+}
+
+#post_detail .show_music_box {
   margin-bottom: 1rem;
   padding: 1.4rem 0;
   border: 1px solid #cccccc;
   border-radius: 1rem;
+}
+
+#post_detail #create_post_form {
+  padding-top: 0;
+}
+
+#post_detail #create_post {
+  border-bottom: 0.1rem solid #cccccc;
+  padding-top: 1.6rem;
+}
+
+#post_detail .posts {
+  border-top: 0;
+}
+
+#create_post {
+  width: 100%;
+  max-width: 56rem;
+}
+
+#create_post > * {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
 }
 
 #create_post #post_media_btns {
@@ -11819,9 +11874,6 @@ label {
 }
 
 #create_post_form {
-  width: 100%;
-  max-width: 46rem;
-  margin: 0 auto;
   padding-top: 3rem;
   text-align: left;
 }

@@ -52,6 +52,7 @@ class BaseClass{//共用関数クラス
         $posts=Post::with('user')
         ->with('like_post_logs')
         ->where('user_id',$user_id)
+        ->where('reply_post_id',null)
         ->orderby('id','desc')
         ->get();
         return $posts;

@@ -18,11 +18,16 @@ Route::get('/', 'Main\IndexController');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/home')->group(function () {
         Route::get('/', 'Main\Home\TopController');
-        Route::get('/detail/{post_id}','Main\Home\ShowController');
         Route::post('/send_post_process', 'Main\Home\SendPostProcessController');
         Route::post('/delete_post_process', 'Main\Home\DeletePostProcessController');
         Route::post('/like_post_process', 'Main\Home\LikePostProcessController');
         Route::post('/repost_process', 'Main\Home\RepostProcessController');
+        Route::prefix('/detail')->group(function () {
+            Route::get('/{post_id}','Main\Home\ShowController');
+            Route::get('/get_replies_chain/{post_id}','Main\Home\GetRepliesChainController');
+            Route::post('/get_replies_chain','Main\Home\GetRepliesChainController');
+            Route::post('/send_reply_process', 'Main\Home\SendReplyProcessController');
+        });
     });
     Route::prefix('/notification')->group(function () {
         Route::get('/', 'Main\Notification\TopController');

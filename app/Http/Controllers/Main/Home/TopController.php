@@ -17,8 +17,11 @@ class TopController extends Controller
         ->select('posts.*')
         ->with('user')
         ->with('like_post_logs')
-        ->whereIn('user_id', $follow_ids)
-        ->orwhere('user_id',Auth::user()->id)
+        ->where(function($query) use ($follow_ids){
+            $query->whereIn('user_id', $follow_ids)
+            ->orwhere('user_id',Auth::user()->id);
+        })
+        ->where('reply_post_id',null)
         ->orderby('id','desc')
         ->get();
         $filtered_posts=$posts->filter(function($post){

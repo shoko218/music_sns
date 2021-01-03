@@ -21,7 +21,7 @@ class Post extends Model
         'reply_post_id',
     ];
 
-    protected $appends = array('reposted','repost');
+    protected $appends = array('reposted','repost','has_replies_chain','reply_post');
 
     public static $post_rules=array(
         'contents'=>['required', 'string', 'max:200'],
@@ -50,6 +50,29 @@ class Post extends Model
             ->with('like_post_logs')
             ->find($this->repost_id);
             return $post;
+        }else{
+            return null;
+        }
+    }
+
+    public function getHasRepliesChainAttribute(){
+        $reply=Post::with('user')
+        ->with('like_post_logs')
+        ->where('reply_post_id',$this->id)
+        ->first();
+        if($reply!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function getReplyPostAttribute(){
+        if($this->reply_post_id!=null){
+            $reply=Post::with('user')
+            ->with('like_post_logs')
+            ->where('id',$this->reply_post_id)
+            ->first();
+            return $reply;
         }else{
             return null;
         }

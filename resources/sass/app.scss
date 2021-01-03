@@ -270,7 +270,7 @@ button:hover,.button:hover{
 }
 
 .contents{
-    padding: $header_h 0 $footer_h;
+    margin: $header_h 0 $footer_h;
 }
 
 .msg_box{
@@ -815,6 +815,9 @@ label{
         margin-left: 1rem;
         width: 100%;
     }
+    &_contents{
+        margin-bottom: 1rem;
+    }
     &_img_box{
         width: 100%;
         padding-top: 75%;
@@ -832,7 +835,7 @@ label{
     .music_box{
         margin-bottom: 1rem;
         padding:1.4rem 0;
-        border: 1px solid $area_border_c;
+        border: 0.1rem solid $area_border_c;
         border-radius: 1rem;
     }
     &_music_spinner{
@@ -844,15 +847,51 @@ label{
         color: #333;
         font-size: 1.2rem;
     }
-    &_detail{
-        display: flex;
-        justify-content: center;
+    &_show_replies_btn{
+        text-align: center;
+        font-size: 1.6rem;
+        margin-top: $std_px;
+        &:hover{
+            opacity: $opacity;
+            cursor: pointer;
+        }
+    }
+}
+
+.replie_chain_post{
+    padding-top: $std_px ;
+}
+
+#post_detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100%;//どうにかしたい
+    #main_post{
+        display: block;
+        padding-top: $header_h;
+        margin-top: $header_h * -1;
+    }
+    .post_detail{
         &_inner{
             width: 100%;
             max-width: 56rem;
             display: flex;
             flex-direction: column;
-            padding: $std_px;
+            >.action_btns{
+                border-top: 0.1rem solid $area_border_c;
+                border-bottom: 0.1rem solid $area_border_c;
+                padding: 1rem 0;
+                >*{
+                    margin: 0;
+                    width: 25%;
+                    text-align: center;
+                    font-size: 2.4rem;
+                }
+            }
+        }
+        &_datas{
+            padding: $std_py $std_px 0;
         }
         &_profile{
             display: flex;
@@ -866,31 +905,38 @@ label{
             margin: 1rem 0;
             font-size: 2rem;
         }
-        .post_msg{
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            margin-left: 0;
-        }
-        .action_btns{
-            border-top: 0.1rem solid $area_border_c;
-            border-bottom: 0.1rem solid $area_border_c;
-            padding: 1rem 0;
-            >*{
-                margin: 0;
-                width: 25%;
-                text-align: center;
-            }
-        }
-        .music_box{
-            margin-bottom: 1rem;
-            padding:1.4rem 0;
-            border: 1px solid $area_border_c;
-            border-radius: 1rem;
-        }
+    }
+    .post_msg{
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        margin-left: 0;
+    }
+    .show_music_box{
+        margin-bottom: 1rem;
+        padding:1.4rem 0;
+        border: 1px solid $area_border_c;
+        border-radius: 1rem;
+    }
+    #create_post_form{
+        padding-top: 0;
+    }
+    #create_post{
+        border-bottom: 0.1rem solid $area_border_c;
+        padding-top: $std_px;
+    }
+    .posts{
+        border-top: 0;
     }
 }
 
 #create_post{
+    width: 100%;
+    max-width: 56rem;
+    >*{
+        width: 100%;
+        max-width: 46rem;
+        margin: 0 auto;
+    }
     #post_media_btns{
         display: flex;
         margin-bottom: 1rem;
@@ -935,9 +981,6 @@ label{
 }
 
 #create_post_form{
-    width: 100%;
-    max-width: 46rem;
-    margin: 0 auto;
     padding-top: $std_py;
     text-align: left;
 }
