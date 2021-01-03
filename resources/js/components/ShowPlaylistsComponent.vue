@@ -1,7 +1,7 @@
 <template>
     <section class="playlists">
         <div class="playlist" v-for="(playlist,idx) in dataPlaylists" :key="playlist['id']">
-            <div class="playlist_inner" v-if="playlist['repost']==null">
+            <a :href="'/playlist/detail/'+playlist['id']" class="playlist_inner" v-if="playlist['repost']==null">
                 <div class="playlist_icon"><!--アイコン--->
                     <a :href="'/user/'+playlist['user']['user_name']">
                         <img :src="'/storage/user_icons/'+playlist['user']['icon_path']" alt="">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="playlist_texts"><!--投稿データ-->
                     <p class="playlist_user_name"><b>{{ playlist['user']['name'] }}</b> {{ "@"+playlist['user']['user_name'] }}</p><!--ユーザー名-->
-                    <div class="playlist_info" :onclick="'location.href=\'/playlist/detail/'+playlist['id']+'\''" >
+                    <div class="playlist_info">
                         <div class="playlist_info_img">
                             <img :src="'/storage/playlist_imgs/'+playlist['img_path']" v-if="playlist['img_path']!=null">
                             <img src="/storage/playlist_imgs/noimage.png" v-else>
@@ -20,19 +20,19 @@
                         </div>
                     </div>
                     <div class="action_btns">
-                        <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
-                        <p @click="repostBtn(playlist['id'],idx)" v-bind:class="{ 'reposted' : playlist['reposted'] }"><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
-                        <p @click="likeBtn(playlist['id'],idx)" v-bind:class="{ 'liked' : playlist['like_playlist_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
-                        <p @click="deletePlaylist(playlist['id'],idx)" v-if="userId==playlist['user_id']">
-                            <i class="fas fa-trash-alt"></i>
+                        <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                        <p @click.prevent.stop="repostBtn(playlist['id'],idx)" v-bind:class="{ 'reposted' : playlist['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート(☆未実装)-->
+                        <p @click.prevent.stop="likeBtn(playlist['id'],idx)" v-bind:class="{ 'liked' : playlist['like_playlist_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
+                        <p @click.prevent.stop="deletePlaylist(playlist['id'],idx)" v-if="userId==playlist['user_id']">
+                            <i class="fas fa-trash-alt faa-float animated-hover"></i>
                         </p><!--投稿削除-->
                         <p v-else>
                             <i>&emsp;</i>
                         </p>
                     </div>
                 </div>
-            </div>
-            <div v-else>
+            </a>
+            <a :href="'/playlist/detail/'+playlist['id']" v-else>
                 <p class="playlist_msg"><i class="fas fa-retweet"></i> {{playlist['user']['name']}}さんが拡散しました</p>
                 <div class="playlist_inner">
                     <div class="playlist_icon"><!--アイコン--->
@@ -53,11 +53,11 @@
                             </div>
                         </div>
                         <div class="action_btns">
-                            <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
-                            <p @click="repostBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'reposted' : playlist['repost']['reposted'] }"><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
-                            <p @click="likeBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'liked' : playlist['repost']['like_playlist_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
-                            <p @click="deletePlaylist(playlist['repost']['id'],idx)" v-if="userId==playlist['repost']['user_id']">
-                                <i class="fas fa-trash-alt"></i>
+                            <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                            <p @click.prevent.stop="repostBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'reposted' : playlist['repost']['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート(☆未実装)-->
+                            <p @click.prevent.stop="likeBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'liked' : playlist['repost']['like_playlist_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
+                            <p @click.prevent.stop="deletePlaylist(playlist['repost']['id'],idx)" v-if="userId==playlist['repost']['user_id']">
+                                <i class="fas fa-trash-alt faa-float animated-hover"></i>
                             </p><!--投稿削除-->
                             <p v-else>
                                 <i>&emsp;</i>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 </template>

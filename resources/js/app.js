@@ -9,6 +9,7 @@ import Vue from 'vue'
 import IconComponent from './components/IconComponent'
 import SelectMyMusicComponent from './components/SelectMyMusicComponent'
 import CreatePostComponent from './components/CreatePostComponent'
+import ShowPostComponent from './components/ShowPostComponent'
 import ShowPostsComponent from './components/ShowPostsComponent'
 import HomeTopComponent from './components/HomeTopComponent'
 import SearchComponent from './components/SearchComponent'
@@ -40,6 +41,6 @@ import draggable from 'vuedraggable'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent,ShowPlaylistComponent,ShowPlaylistsComponent
+        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent,ShowPlaylistComponent,ShowPlaylistsComponent,ShowPostComponent
     },
 });

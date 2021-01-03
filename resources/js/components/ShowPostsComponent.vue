@@ -1,7 +1,7 @@
 <template><!--投稿を表示-->
     <section class="posts">
         <div class="post" v-for="(post,idx) in dataPosts" :key="post['id']">
-            <div class="post_inner" v-if="post['repost']==null"><!--自分の投稿-->
+            <a :href="'/home/detail/'+post['id']" class="post_inner" v-if="post['repost']==null"><!--自分の投稿-->
                 <div class="post_icon" ><!--アイコン--->
                     <a :href="'/user/'+post['user']['user_name']">
                         <img :src="'/storage/user_icons/'+post['user']['icon_path']" alt="">
@@ -22,23 +22,23 @@
                         </div>
                     </div>
                     <p v-else-if="post['music_track_id']!=null" class="post_music_spinner"><i class="fas fa-spinner faa-spin animated"></i></p><!--音楽がついているが読み込み中ならこれを表示-->
-                    <div v-if="post['img_path']!=null" class="post_img_box" @click="showImg(post['img_path'])"><!--画像がついていれば画像を表示-->
+                    <div v-if="post['img_path']!=null" class="post_img_box" @click.prevent.stop="showImg(post['img_path'])"><!--画像がついていれば画像を表示-->
                         <img class="post_img" :src="'/storage/post_imgs/'+post['img_path']" alt="" v-if="post['img_path']!=null" >
                     </div>
                     <div class="action_btns">
-                        <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
-                        <p @click="repostBtn(post['id'],idx)" v-bind:class="{ 'reposted' : post['reposted'] }"><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
-                        <p @click="likeBtn(post['id'],idx)" v-bind:class="{ 'liked' : post['like_post_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
-                        <p @click="deletePost(post['id'],idx)" v-if="userId==post['user_id']">
-                            <i class="fas fa-trash-alt"></i>
+                        <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                        <p @click.prevent.stop="repostBtn(post['id'],idx)" v-bind:class="{ 'reposted' : post['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート-->
+                        <p @click.prevent.stop="likeBtn(post['id'],idx)" v-bind:class="{ 'liked' : post['like_post_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
+                        <p @click.prevent.stop="deletePost(post['id'],idx)" v-if="userId==post['user_id']">
+                            <i class="fas fa-trash-alt faa-float animated-hover"></i>
                         </p><!--投稿削除-->
                         <p v-else>
                             <i>&emsp;</i>
                         </p>
                     </div>
                 </div>
-            </div>
-            <div v-else><!-- 拡散された投稿 -->
+            </a>
+            <a :href="'/home/detail/'+post['id']" v-else><!-- 拡散された投稿 -->
                 <p class="post_msg"><i class="fas fa-retweet"></i> {{post['user']['name']}}さんが拡散しました</p>
                 <div class="post_inner">
                     <div class="post_icon" ><!--アイコン--->
@@ -65,11 +65,11 @@
                             <img class="post_img" :src="'/storage/post_imgs/'+post['repost']['img_path']" alt="" v-if="post['repost']['img_path']!=null" >
                         </div>
                         <div class="action_btns">
-                            <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
-                            <p @click="repostBtn(post['repost']['id'],idx)" v-bind:class="{ 'reposted' : post['repost']['reposted'] }"><i class="fas fa-retweet"></i></p><!--リツイート(☆未実装)-->
-                            <p @click="likeBtn(post['repost']['id'],idx)" v-bind:class="{ 'liked' : post['repost']['like_post_logs'].length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
-                            <p @click="deletePost(post['repost']['id'],idx)" v-if="userId==post['repost']['user_id']">
-                                <i class="fas fa-trash-alt"></i>
+                            <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                            <p @click.prevent.stop="repostBtn(post['repost']['id'],idx)" v-bind:class="{ 'reposted' : post['repost']['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート(☆未実装)-->
+                            <p @click.prevent.stop="likeBtn(post['repost']['id'],idx)" v-bind:class="{ 'liked' : post['repost']['like_post_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
+                            <p @click.prevent.stop="deletePost(post['repost']['id'],idx)" v-if="userId==post['repost']['user_id']">
+                                <i class="fas fa-trash-alt faa-float animated-hover"></i>
                             </p><!--投稿削除-->
                             <p v-else>
                                 <i>&emsp;</i>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 </template>

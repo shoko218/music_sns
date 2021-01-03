@@ -12,10 +12,10 @@ class TopController extends Controller
 {
     public function __invoke(Request $request){
         $follow_ids=Fflog::select('to_user_id')->where('from_user_id',Auth::user()->id)->get();
-        $follow_ids[]=Auth::user()->id;
         $playlists=Playlist::with('user')
         ->with('like_playlist_logs')
         ->whereIn('user_id', $follow_ids)
+        ->orwhere('user_id',Auth::user()->id)
         ->orderby('id','desc')
         ->get();
         $filtered_playlists=$playlists->filter(function($playlist){

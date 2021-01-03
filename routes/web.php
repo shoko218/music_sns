@@ -18,6 +18,7 @@ Route::get('/', 'Main\IndexController');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/home')->group(function () {
         Route::get('/', 'Main\Home\TopController');
+        Route::get('/detail/{post_id}','Main\Home\ShowController');
         Route::post('/send_post_process', 'Main\Home\SendPostProcessController');
         Route::post('/delete_post_process', 'Main\Home\DeletePostProcessController');
         Route::post('/like_post_process', 'Main\Home\LikePostProcessController');

@@ -13,12 +13,12 @@ class TopController extends Controller
     public function __invoke(Request $request){//ホーム
         $user_id=Auth::user()->id;
         $follow_ids=Fflog::select('to_user_id')->where('from_user_id',$user_id)->get();
-        $follow_ids[]=$user_id;
         $posts=Post::join('users','users.id','=','posts.user_id')
         ->select('posts.*')
         ->with('user')
         ->with('like_post_logs')
         ->whereIn('user_id', $follow_ids)
+        ->orwhere('user_id',Auth::user()->id)
         ->orderby('id','desc')
         ->get();
         $filtered_posts=$posts->filter(function($post){

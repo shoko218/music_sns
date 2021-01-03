@@ -16,6 +16,10 @@ class DeletePostProcessController extends Controller
             $post=Post::find($request->post_id);
             if ($post!=null&&Gate::allows('edit-and-delete',$post->user_id)) {
                 $post->delete();
+                if($request->from_detail==true){
+                    session()->flash('suc_msg','削除しました。');
+                    return ;
+                }
                 $param=['deleted_id'=>$request->post_id];
             }else{
                 $param=['deleted_id'=>-1];

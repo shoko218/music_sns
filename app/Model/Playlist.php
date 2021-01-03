@@ -31,6 +31,7 @@ class Playlist extends Model
     public function getRepostAttribute(){//拡散している対象のプレイリストを取得
         if($this->repost_id!=null){
             $playlist=Playlist::with('user')
+            ->with('playlist_logs')
             ->with('like_playlist_logs')
             ->find($this->repost_id);
             return $playlist;

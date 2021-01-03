@@ -37,7 +37,7 @@ $btn_px:2rem;
 $btn_my:2rem;
 $btn_wsz:24rem;
 
-$opacity:0.7;
+$opacity:0.9;
 
 $std_my:3rem;
 $std_mx:2rem;
@@ -613,6 +613,7 @@ label{
     >p{
         color: gray;
         font-size: 2rem;
+        z-index:2;
         :hover{
             cursor:pointer;
         }
@@ -842,6 +843,50 @@ label{
         margin-left: 6rem;
         color: #333;
         font-size: 1.2rem;
+    }
+    &_detail{
+        display: flex;
+        justify-content: center;
+        &_inner{
+            width: 100%;
+            max-width: 56rem;
+            display: flex;
+            flex-direction: column;
+            padding: $std_px;
+        }
+        &_profile{
+            display: flex;
+            .post_user_name{
+                margin-left: 1rem;
+                line-height: 2.5rem;
+                font-size: 1.8rem;
+            }
+        }
+        &_contents{
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+        .post_msg{
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            margin-left: 0;
+        }
+        .action_btns{
+            border-top: 0.1rem solid $area_border_c;
+            border-bottom: 0.1rem solid $area_border_c;
+            padding: 1rem 0;
+            >*{
+                margin: 0;
+                width: 25%;
+                text-align: center;
+            }
+        }
+        .music_box{
+            margin-bottom: 1rem;
+            padding:1.4rem 0;
+            border: 1px solid $area_border_c;
+            border-radius: 1rem;
+        }
     }
 }
 
@@ -1081,10 +1126,26 @@ label{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .action_btns{
+        padding: 1rem 0;
+        margin: 0;
+        >*{
+            margin: 0;
+            width: 25%;
+            text-align: center;
+        }
+    }
+    h2{
+        padding:2rem 2rem 1rem;
+    }
+    .playlist_msg{
+        margin-top: 1.4rem;
+        margin-left: $std_px;
+        font-size: 1.4rem;
+    }
     &_info{
-        margin:1rem 0;
         display: flex;
-        padding:1.4rem 2rem;
+        padding: 1.4rem $std_px;
         padding-right: 0;
         &_img{
             margin-right: 2rem;
