@@ -9,7 +9,7 @@
 @include('layouts.header')
 
 @section('content')
-    <search-component></search-component>
+    <search-component :user-id={{ Auth::user()->id }}></search-post-component>
 @endsection
 
 @include('layouts.footer')

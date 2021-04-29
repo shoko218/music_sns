@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="action_btns">
-                        <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                        <p><i class="fas fa-comment faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
                         <p @click.prevent.stop="repostBtn(playlist['id'],idx)" v-bind:class="{ 'reposted' : playlist['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート(☆未実装)-->
                         <p @click.prevent.stop="likeBtn(playlist['id'],idx)" v-bind:class="{ 'liked' : playlist['like_playlist_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
                         <p @click.prevent.stop="deletePlaylist(playlist['id'],idx)" v-if="userId==playlist['user_id']">
@@ -53,8 +53,8 @@
                             </div>
                         </div>
                         <div class="action_btns">
-                            <p><i class="fas fa-reply faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
-                            <p @click.prevent.stop="repostBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'reposted' : playlist['repost']['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート(☆未実装)-->
+                            <p><i class="fas fa-comment faa-float animated-hover"></i></p><!--リプライ(☆未実装)-->
+                            <p @click.prevent.stop="repostBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'reposted' : playlist['repost']['reposted'] }"><i class="fas fa-retweet faa-float animated-hover"></i></p><!--リツイート)-->
                             <p @click.prevent.stop="likeBtn(playlist['repost']['id'],idx)" v-bind:class="{ 'liked' : playlist['repost']['like_playlist_logs'].length }"><i class="fas fa-heart faa-float animated-hover"></i></p><!--お気に入り-->
                             <p @click.prevent.stop="deletePlaylist(playlist['repost']['id'],idx)" v-if="userId==playlist['repost']['user_id']">
                                 <i class="fas fa-trash-alt faa-float animated-hover"></i>

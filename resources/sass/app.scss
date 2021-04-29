@@ -270,13 +270,13 @@ button:hover,.button:hover{
 }
 
 .contents{
-    margin: $header_h 0 $footer_h;
+    padding: $header_h 0 $footer_h;
 }
 
-.msg_box{
+.g4_box{
     margin: $std_my $std_mx;
     font-size: $normal_fz;
-    max-width: 76.8rem;
+    max-width: 56rem;
     button{
         height: 100%;
         line-height: 100%;
@@ -344,10 +344,6 @@ label{
     }
 }
 
-.radio_parts,.input_parts{
-    margin-bottom: $form_parts_my;
-}
-
 .check{
     display: flex;
     justify-content: center;
@@ -364,20 +360,17 @@ label{
     margin-right: 1rem;
 }
 
-.radiobtns_label{
-    margin-top: 5px;
-    font-size: 14px;
-    text-align: left;
-}
-
 .radiobtns{
     display: flex;
     justify-content: space-between;
+    font-size: $normal_fz;;
 }
 .radio{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: $normal_fz;
+    margin-right: 1.4rem;
     & a{
         text-decoration: underline;
     }
@@ -386,7 +379,6 @@ label{
 .radiobtn{
     width: $normal_fz;
     height:$normal_fz;
-    margin-right: 1rem;
 }
 
 .form_requires{
@@ -626,7 +618,18 @@ label{
     .reposted{
         color:rgb(85, 173, 67)
     }
+
 }
+
+
+    .liked{
+        color:rgb(255, 83, 135)
+    }
+
+    .reposted{
+        color:rgb(85, 173, 67)
+    }
+
 
 #login{
     .check{
@@ -713,13 +716,21 @@ label{
                 width: 25%;
                 height: auto;
                 background: white;
-                color:$grad_center_c;
+            color:lightgray;
                 border-radius: 0;
-                border-bottom: 0.4rem solid transparent;
+                border-bottom: 0.4rem solid lightgray;
             }
             .active_tab{
+                color:$grad_center_c;
                 border-bottom: 0.4rem solid $grad_center_c;
             }
+        }
+        .posts,.playlists{
+            border-top: none;
+        }
+        >h2{
+            text-align: center;
+            margin: $std_my $std_mx;
         }
     }
 }
@@ -891,7 +902,7 @@ label{
             }
         }
         &_datas{
-            padding: $std_py $std_px 0;
+            padding: $std_px $std_px 0;
         }
         &_profile{
             display: flex;
@@ -989,6 +1000,49 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 56rem;
+    margin: 0 auto;
+    .tabs{
+        display: flex;
+        width: 100%;
+        >button{
+            min-width: 0;
+            width: 50%;
+            height: 6rem;
+            background: white;
+            color:lightgray;
+            border-radius: 0;
+            border-bottom: 0.4rem solid lightgray;
+        }
+        .active_tab{
+            color:$grad_center_c;
+            border-bottom: 0.4rem solid $grad_center_c;
+        }
+    }
+    &_inner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    &_data_form{
+        width: 100%;
+        max-width: 36rem;
+        margin: 2rem 0;
+        >.btns{
+            margin-top: 2rem;
+        }
+        .select_music_box {
+            margin-bottom: 1rem;
+            padding: 1.4rem 0;
+            border: 0.1rem solid #cccccc;
+            border-radius: 1rem;
+        }
+    }
+    .radiobtns{
+        margin-bottom: $std_my;
+    }
 }
 
 #follow_list,#follower_list{
@@ -1218,6 +1272,43 @@ label{
         .music_box{
             padding: 0.6rem 0;
             border-bottom: 1px solid $area_border_c;
+        }
+    }
+}
+
+#show_notices{
+    display: flex;
+    justify-content: center;
+    #notices{
+        width: 100%;
+        max-width: 56rem;
+        border-top: 0.1rem solid $area_border_c;
+        border-bottom: 0.1rem solid $area_border_c;
+        .notice{
+            padding: $std_px;
+            &:not(:last-child){
+                border-bottom: 0.1rem solid $area_border_c;
+            }
+            &_title{
+                font-size: 2rem;
+                i{
+                    width: 2.6rem;
+                    height: auto;
+                    text-align: center;
+                    margin-right: 0.8rem;
+                }
+                img{
+                    height: 4rem;
+                    width: 4rem;
+                    border-radius: 2rem;
+                }
+            }
+            &_description{
+                margin-left: 3.4rem;
+                margin-top: 1.6rem;
+                font-size: 1.6rem;
+                color: #666;
+            }
         }
     }
 }

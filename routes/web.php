@@ -29,8 +29,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/send_reply_process', 'Main\Home\SendReplyProcessController');
         });
     });
-    Route::prefix('/notification')->group(function () {
-        Route::get('/', 'Main\Notification\TopController');
+    Route::prefix('/notice')->group(function () {
+        Route::get('/', 'Main\Notice\TopController');
     });
     Route::prefix('/search')->group(function () {
         Route::get('/', 'Main\Search\TopController');
@@ -63,7 +63,8 @@ Route::prefix('/api')->group(function(){
     Route::get('/search_music', 'Api\SearchMusicController');
     Route::post('/set_my_music', 'Api\SetMyMusicController');
     Route::post('/remove_my_music', 'Api\RemoveMyMusicController');
-    Route::post('/search_data', 'Api\SearchDataController');
+    Route::post('/search_post', 'Api\SearchPostController');
+    Route::post('/search_playlist', 'Api\SearchPlaylistController');
     Route::post('/change_follow', 'Api\ChangeFollowController');
     Route::post('/get_follow_relations', 'Api\GetFollowRelationsController');
     Route::get('/get_user_posts', 'Api\GetUserPostsController');

@@ -18,14 +18,9 @@
                             <p><i class="fas fa-search"></i></p>
                         </li>
                     </a>
-                    <a href="/notification">
-                        <li @if (Request::is('notification')||Request::is('notification/*')) class="selected_li" @endif><!--通知のページ内ならば選択デザインに切り替え-->
+                    <a href="/notice">
+                        <li @if (Request::is('notice')||Request::is('notice/*')) class="selected_li" @endif><!--通知のページ内ならば選択デザインに切り替え-->
                             <p><i class="fas fa-bell"></i></p>
-                        </li>
-                    </a>
-                    <a href="/dm">
-                        <li @if (Request::is('dm')||Request::is('dm/*')) class="selected_li" @endif><!--dmのページ内ならば選択デザインに切り替え-->
-                            <p><i class="fas fa-envelope"></i></p>
                         </li>
                     </a>
                 </ul>

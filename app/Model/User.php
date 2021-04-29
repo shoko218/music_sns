@@ -89,4 +89,8 @@ class User extends Authenticatable
     public function playlists(){
         return $this->hasMany('App\Model\Playlist');
     }
+
+    public function notice_logs(){
+        return $this->hasMany('App\Model\Notice_log','to_user_id');
+    }
 }

@@ -29,9 +29,9 @@
                     <p>×</p>
                 </div>
             </div>
-            <p v-else-if="selectedMusicId!=null">…</p><!--添付する曲を登録しているが、曲情報を読み込めていない場合-->
-            <div id="post_search_music_parts">
-                <search-music-component v-if="showed" ref="search_music" @selected-music="setMusic"></search-music-component>
+            <p v-else-if="selectedMusicId!=null"><i class="fas fa-spinner faa-spin animated"></i></p><!--添付する曲を登録しているが、曲情報を読み込めていない場合-->
+            <div id="post_search_music_parts" v-if="showed">
+                <search-music-component ref="search_music" @selected-music="setMusic"></search-music-component>
             </div>
             <div id="post_img_preview_parts" v-if="selectedImg!=null"><!--選択した画像がある場合はプレビューを表示-->
                 <div id="post_img_preview">
@@ -86,7 +86,6 @@
                     this.selectedMusic=res.data.musicInfo;
                 });
                 this.selectedMusicId=track_id;
-                this.word="";//検索ワードを削除
                 this.$refs.search_music.reset();//検索結果をリセットする
                 this.showed=false;
             },

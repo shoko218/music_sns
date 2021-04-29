@@ -1,53 +1,45 @@
 <template>
     <div id="search">
-        <div id='showed_img_bg' @click="disappearedImg()" v-if="showedImgPath!=null">
-            <img :src="'/storage/post_imgs/'+showedImgPath" alt="" id="showed_img">
+        <div class="tabs"><!--ステータス別タブ-->
+            <button v-bind:class="[searchFor==0 ? 'active_tab' : 'inactive_tab']" @click="tab(0)" class="tab">投稿</button>
+            <button v-bind:class="[searchFor==1 ? 'active_tab' : 'inactive_tab']" @click="tab(1)" class="tab">プレイリスト</button>
         </div>
-        <section class="search_inputs">
-            <label for="search_datas_input">投稿を検索</label>
-            <div class="search_input_parts">
-                <input class="search_input" type="text" v-model="keyword" placeholder="キーワードを入力" id="search_datas_input">
-                <div class="search_input_btns" v-on:click="search()">
-                    <p><i class="fas fa-search"></i></p>
-                </div>
-            </div>
-        </section>
-        <show-posts-component :posts="posts" ref="show_posts" @show-img="showImg" v-if="posts.length"></show-posts-component>
+        <search-post-component ref="search_post" v-if="searchFor==0"></search-post-component>
+        <search-playlist-component ref="search_playlist" :user-id="userId" v-if="searchFor==1"></search-playlist-component>
     </div>
 </template>
 
 <script>
-    import ShowPostsComponent from './ShowPostsComponent'
+    import SearchPostComponent from './SearchPostComponent'
+    import SearchPlaylistComponent from './SearchPlaylistComponent';
     export default {
         components:{
-            ShowPostsComponent
+            SearchPostComponent,SearchPlaylistComponent
+        },
+        props: {
+            userId:Number
         },
         data(){
             return {
-                keyword:null,
-                posts:[],
-                showedImgPath:null,
+                searchFor:0,
             }
         },
+        mounted() {
+        },
+        watch:{
+        },
         methods:{
-            search(){
-                var post_data = {
-                    'keyword': this.keyword,
-                };
-                if(this.posts!=null){
-                    this.posts.splice(0, this.posts.length)
+            tab(idx){
+                switch (this.searchFor) {
+                    case 0:
+                        this.$refs.search_post.stopAllAudios();
+                        break;
+                    case 1:
+                        this.$refs.search_playlist.stopAllAudios();
+                        break;
                 }
-                axios.post('/api/search_data',post_data).then(res=>{
-                    this.posts.push(...res.data.results);
-                });
-            },
-            showImg(imgPath){
-                this.showedImgPath=imgPath;
-            },
-            disappearedImg(){
-                this.showedImgPath=null;
+                this.searchFor=idx;
             }
         }
     }
 </script>
-

@@ -14,6 +14,8 @@ import ShowPostComponent from './components/ShowPostComponent'
 import ShowPostsComponent from './components/ShowPostsComponent'
 import ShowRepliesChainComponent from './components/ShowRepliesChainComponent'
 import HomeTopComponent from './components/HomeTopComponent'
+import SearchPostComponent from './components/SearchPostComponent'
+import SearchPlaylistComponent from './components/SearchPlaylistComponent'
 import SearchComponent from './components/SearchComponent'
 import UserDetailComponent from './components/UserDetailComponent'
 import CreatePlaylistComponent from './components/CreatePlaylistComponent'
@@ -43,6 +45,6 @@ import draggable from 'vuedraggable'
 const app = new Vue({
     el: '#app',
     components: {
-        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent,ShowPlaylistComponent,ShowPlaylistsComponent,ShowPostComponent,CreateReplyComponent,ShowRepliesChainComponent
+        IconComponent,SelectMyMusicComponent,CreatePostComponent,ShowPostsComponent,HomeTopComponent,SearchPostComponent,SearchPlaylistComponent,UserDetailComponent,CreatePlaylistComponent,SearchMusicComponent,ShowPlaylistComponent,ShowPlaylistsComponent,ShowPostComponent,CreateReplyComponent,ShowRepliesChainComponent,SearchComponent
     },
 });

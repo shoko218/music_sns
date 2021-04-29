@@ -13,7 +13,7 @@
             </div>
         </section>
         <section class="action_btns">
-                <p><i class="fas fa-reply"></i></p><!--リプライ(☆未実装)-->
+                <p><i class="fas fa-comment"></i></p><!--リプライ(☆未実装)-->
                 <p @click="repostBtn()" v-bind:class="{ 'reposted' : dataPlaylist.reposted }"><i class="fas fa-retweet"></i></p><!--リツイート-->
                 <p @click="likeBtn()" v-bind:class="{ 'liked' : dataPlaylist.like_playlist_logs.length }"><i class="fas fa-heart"></i></p><!--お気に入り-->
                 <p @click="deletePost()" v-if="userId==dataPlaylist.user_id">

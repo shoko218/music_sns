@@ -11058,7 +11058,7 @@ button:hover,
 }
 
 .contents {
-  margin: 5.6rem 0 5.6rem;
+  padding: 5.6rem 0 5.6rem;
 }
 
 .msg_box {
@@ -11143,11 +11143,6 @@ label {
   border: none;
 }
 
-.radio_parts,
-.input_parts {
-  margin-bottom: 2rem;
-}
-
 .check {
   display: flex;
   justify-content: center;
@@ -11165,21 +11160,18 @@ label {
   margin-right: 1rem;
 }
 
-.radiobtns_label {
-  margin-top: 5px;
-  font-size: 14px;
-  text-align: left;
-}
-
 .radiobtns {
   display: flex;
   justify-content: space-between;
+  font-size: 1.4rem;
 }
 
 .radio {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 1.4rem;
+  margin-right: 1.4rem;
 }
 
 .radio a {
@@ -11189,7 +11181,6 @@ label {
 .radiobtn {
   width: 1.4rem;
   height: 1.4rem;
-  margin-right: 1rem;
 }
 
 .form_requires {
@@ -11468,6 +11459,14 @@ label {
   color: #55ad43;
 }
 
+.liked {
+  color: #ff5387;
+}
+
+.reposted {
+  color: #55ad43;
+}
+
 #login .check {
   margin-bottom: 2rem;
 }
@@ -11568,13 +11567,24 @@ label {
   width: 25%;
   height: auto;
   background: white;
-  color: #971BE7;
+  color: lightgray;
   border-radius: 0;
-  border-bottom: 0.4rem solid transparent;
+  border-bottom: 0.4rem solid lightgray;
 }
 
 #user_detail #user_posts .tabs .active_tab {
+  color: #971BE7;
   border-bottom: 0.4rem solid #971BE7;
+}
+
+#user_detail #user_posts .posts,
+#user_detail #user_posts .playlists {
+  border-top: none;
+}
+
+#user_detail #user_posts > h2 {
+  text-align: center;
+  margin: 3rem 2rem;
 }
 
 #edit_mypage .edit_profile_form_parts {
@@ -11768,7 +11778,7 @@ label {
 }
 
 #post_detail .post_detail_datas {
-  padding: 3rem 1.6rem 0;
+  padding: 1.6rem 1.6rem 0;
 }
 
 #post_detail .post_detail_profile {
@@ -11882,6 +11892,57 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+#search .tabs {
+  display: flex;
+  width: 100%;
+}
+
+#search .tabs > button {
+  min-width: 0;
+  width: 50%;
+  height: 6rem;
+  background: white;
+  color: lightgray;
+  border-radius: 0;
+  border-bottom: 0.4rem solid lightgray;
+}
+
+#search .tabs .active_tab {
+  color: #971BE7;
+  border-bottom: 0.4rem solid #971BE7;
+}
+
+#search_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#search_data_form {
+  width: 100%;
+  max-width: 36rem;
+  margin: 2rem 0;
+}
+
+#search_data_form > .btns {
+  margin-top: 2rem;
+}
+
+#search_data_form .select_music_box {
+  margin-bottom: 1rem;
+  padding: 1.4rem 0;
+  border: 0.1rem solid #cccccc;
+  border-radius: 1rem;
+}
+
+#search .radiobtns {
+  margin-bottom: 3rem;
 }
 
 #follow_list,
@@ -12157,6 +12218,50 @@ label {
 #show_playlist_musics .music_box {
   padding: 0.6rem 0;
   border-bottom: 1px solid #cccccc;
+}
+
+#show_notices {
+  display: flex;
+  justify-content: center;
+}
+
+#show_notices #notices {
+  width: 100%;
+  max-width: 56rem;
+  border-top: 0.1rem solid #cccccc;
+  border-bottom: 0.1rem solid #cccccc;
+}
+
+#show_notices #notices .notice {
+  padding: 1.6rem;
+}
+
+#show_notices #notices .notice:not(:last-child) {
+  border-bottom: 0.1rem solid #cccccc;
+}
+
+#show_notices #notices .notice_title {
+  font-size: 2rem;
+}
+
+#show_notices #notices .notice_title i {
+  width: 2.6rem;
+  height: auto;
+  text-align: center;
+  margin-right: 0.8rem;
+}
+
+#show_notices #notices .notice_title img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 2rem;
+}
+
+#show_notices #notices .notice_description {
+  margin-left: 3.4rem;
+  margin-top: 1.6rem;
+  font-size: 1.6rem;
+  color: #666;
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {

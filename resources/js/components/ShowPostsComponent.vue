@@ -87,6 +87,7 @@
                 </div>
             </a>
         </div>
+
     </div>
 </template>
 
@@ -123,7 +124,6 @@
         },
         mounted() {
             this.getPostMusics();
-            console.log(this.posts);
         },
         watch:{
             dataPosts: function(){//イチオシ音楽が新しく定義された際にAudioオブジェクトを作る
@@ -149,7 +149,8 @@
                 this.$emit('stop-create-post-music');
                 this.$emit('stop-my-music');
                 this.$emit('stop-all-music');
-                this.stopAudio();
+                this.$emit('stop-search-all-music');
+                // this.stopAudio();
             },
             stopAudio(){
                 if(this.playingIndex!=null){

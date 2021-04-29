@@ -37,10 +37,14 @@
                 <button v-bind:class="[currentId==2 ? 'active_tab' : 'inactive_tab']" @click="tab(2)" class="tab">お気に入り<br>投稿</button>
                 <button v-bind:class="[currentId==3 ? 'active_tab' : 'inactive_tab']" @click="tab(3)" class="tab">お気に入り<br>プレイリスト</button>
             </div>
-            <show-posts-component :posts="posts" :user-id="myId" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="currentId==0"></show-posts-component>
-            <show-playlists-component :playlists="playlists" :user-id="myId" v-else-if="currentId==1"></show-playlists-component>
-            <show-liked-posts-component :posts="likedPosts" :user-id="myId" @unfav="unfavPost" ref="show_liked_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-else-if="currentId==2"></show-liked-posts-component>
-            <show-liked-playlists-component :playlists="likedPlaylists" :user-id="myId" @unfav="unfavPlaylist" ref="show_liked_playlists" v-else-if="currentId==3"></show-liked-playlists-component>
+            <show-posts-component :posts="posts" :user-id="myId" ref="show_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-if="currentId==0&&posts.length"></show-posts-component>
+            <h2 v-else-if="currentId==0">投稿はありません。</h2>
+            <show-playlists-component :playlists="playlists" :user-id="myId" v-else-if="currentId==1&&playlists.length"></show-playlists-component>
+            <h2 v-else-if="currentId==1">投稿はありません。</h2>
+            <show-liked-posts-component :posts="likedPosts" :user-id="myId" @unfav="unfavPost" ref="show_liked_posts" @show-img="showImg" @stop-my-music="stopMyMusic" v-else-if="currentId==2&&likedPosts.length"></show-liked-posts-component>
+            <h2 v-else-if="currentId==2">投稿はありません。</h2>
+            <show-liked-playlists-component :playlists="likedPlaylists" :user-id="myId" @unfav="unfavPlaylist" ref="show_liked_playlists" v-else-if="currentId==3&&likedPlaylists.length"></show-liked-playlists-component>
+            <h2 v-else-if="currentId==3">投稿はありません。</h2>
         </section>
     </div>
 </template>
@@ -154,10 +158,14 @@
             tab(idx){
                 switch (this.currentId) {
                     case 0:
-                        this.$refs.show_posts.stopAudio();
+                        if(this.posts.length){
+                            this.$refs.show_posts.stopAudio();
+                        }
                         break;
                     case 2:
-                        this.$refs.show_liked_posts.stopAudio();
+                        if(this.likedPosts.length){
+                            this.$refs.show_liked_posts.stopAudio();
+                        }
                         break;
                 }
                 switch (idx) {
